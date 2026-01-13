@@ -372,6 +372,76 @@ namespace SeCoGEST.Web
             
         }
 
+        public static void InviaEmailAssegnazioneAttivitaProgetto(Entities.Progetto_Attivita attivita, Entities.Operatore operatore, IEnumerable<string> ruoli)
+        {
+            if (attivita == null)
+            {
+                throw new ArgumentNullException("attivita", "Parametro nullo");
+            }
+
+            if (operatore == null)
+            {
+                throw new ArgumentNullException("operatore", "Parametro nullo");
+            }
+
+            Logic.Operatori llOperatori = new Logic.Operatori();
+            List<string> elencoEmail = llOperatori.GetValidEmailsListFromOperatore(operatore);
+            if (elencoEmail == null || elencoEmail.Count <= 0)
+            {
+                return;
+            }
+
+            List<string> ruoliDistinct = ruoli?
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim())
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList() ?? new List<string>();
+
+            Entities.Progetto progetto = attivita.Progetto;
+            if (progetto == null)
+            {
+                Logic.Progetti llProgetti = new Logic.Progetti();
+                progetto = llProgetti.Find(new EntityId<Entities.Progetto>(attivita.IDProgetto));
+            }
+
+            string denominazioneProgetto = progetto != null ? progetto.DenominazioneCliente : string.Empty;
+            string descrizioneAttivita = attivita.Descrizione ?? string.Empty;
+            string urlAttivita = String.Format("{0}Progetti/DettagliProgetto.aspx?ID={1}&IDAttivita={2}", ConfigurationKeys.URL_APPLICAZIONE, attivita.IDProgetto, attivita.ID);
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(String.Format("Gentile {0},{1}", operatore.CognomeNome, HtmlEnvironment.NewLine));
+            sb.AppendLine(String.Format("questa email è stata generata in automatico.{0}", HtmlEnvironment.NewLine));
+
+            if (ruoliDistinct.Count > 0)
+            {
+                sb.AppendLine(String.Format("Sei stato indicato come {1} per l'attività di progetto.{0}", HtmlEnvironment.NewLine, String.Join(", ", ruoliDistinct)));
+            }
+            else
+            {
+                sb.AppendLine(String.Format("Sei stato indicato per l'attività di progetto.{0}", HtmlEnvironment.NewLine));
+            }
+
+            if (!string.IsNullOrWhiteSpace(denominazioneProgetto))
+            {
+                sb.AppendLine(String.Format("Progetto: {1}{0}", HtmlEnvironment.NewLine, denominazioneProgetto));
+            }
+
+            if (!string.IsNullOrWhiteSpace(descrizioneAttivita))
+            {
+                sb.AppendLine(String.Format("Attività: {1}{0}", HtmlEnvironment.NewLine, descrizioneAttivita));
+            }
+
+            sb.AppendLine(String.Format("{0}<a href=\"{1}\">Apri attività nel gestionale</a>{0}", HtmlEnvironment.NewLine, urlAttivita));
+            sb.AppendLine(String.Format("{0}Cordiali saluti.{1}{2}", HtmlEnvironment.NewLine, HtmlEnvironment.NewLine, FirmaEmail()));
+
+            string oggetto = "Assegnazione Attività Progetto";
+
+            foreach (string email in elencoEmail)
+            {
+                InviaEmail(oggetto, sb.ToString(), ConfigurationKeys.MITTENTE_EMAIL_NOTIFICA_INTERVENTO, new string[] { email }, MailPriority.Normal);
+            }
+        }
+
         /// <summary>
         /// Effettua l'invio dell'email contenente tutti gli interventi, raggruppati per operatore, che non risultano chiusi e validati e che sono stati presi in carico
         /// </summary>

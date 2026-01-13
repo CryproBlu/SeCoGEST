@@ -1,5 +1,6 @@
 ﻿using SeCoGEST.Entities;
 using SeCoGEST.Helper;
+using SeCoGEST.Web;
 using SeCoGEST.Web.UI;
 using System;
 using System.Collections;
@@ -283,6 +284,9 @@ namespace SeCoGEST.Web.Progetti
                 Entities.Progetto_Attivita pa = llPA.Find(itemId);
                 if(pa != null)
                 {
+                    Guid? idOperatoreAssegnatoPrecedente = pa.IDOperatoreAssegnato;
+                    Guid? idOperatoreEsecutorePrecedente = pa.IDOperatoreEsecutore;
+
                     pa.DataInserimento = rdpDataInserimento.SelectedDate.Value;
                     pa.DataInizio = rdpDataInizio.SelectedDate;
                     pa.OraInizio = rtpOraInizio.SelectedTime;
@@ -293,18 +297,22 @@ namespace SeCoGEST.Web.Progetti
                     pa.NoteOperatore = rtbNoteOperatore.Text.Trim();
                     pa.Scadenza = rdtpScadenza.SelectedDate;
 
-                    if(Guid.TryParse(rcbOperatoreAssegnato.SelectedValue, out Guid IDA))
+                    Guid? idOperatoreAssegnatoSelezionato = null;
+                    if (Guid.TryParse(rcbOperatoreAssegnato.SelectedValue, out Guid IDA))
                     {
                         pa.IDOperatoreAssegnato = IDA;
+                        idOperatoreAssegnatoSelezionato = IDA;
                     }
                     else
                     {
                         pa.IDOperatoreAssegnato = null;
                     }
 
+                    Guid? idOperatoreEsecutoreSelezionato = null;
                     if (Guid.TryParse(rcbOperatoreEsecutore.SelectedValue, out Guid IDE))
                     {
                         pa.IDOperatoreEsecutore = IDE;
+                        idOperatoreEsecutoreSelezionato = IDE;
                     }
                     else
                     {
@@ -331,6 +339,7 @@ namespace SeCoGEST.Web.Progetti
 
                     llPA.SubmitToDatabase();
 
+                    InviaNotificaCambioOperatoriAttivita(pa, idOperatoreAssegnatoPrecedente, idOperatoreAssegnatoSelezionato, idOperatoreEsecutorePrecedente, idOperatoreEsecutoreSelezionato);
 
 
                     var llA = new Logic.Allegati(llPA);
@@ -380,6 +389,45 @@ namespace SeCoGEST.Web.Progetti
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private void InviaNotificaCambioOperatoriAttivita(Entities.Progetto_Attivita attivita, Guid? idOperatoreAssegnatoPrecedente, Guid? idOperatoreAssegnatoSelezionato, Guid? idOperatoreEsecutorePrecedente, Guid? idOperatoreEsecutoreSelezionato)
+        {
+            if (attivita == null)
+            {
+                return;
+            }
+
+            Dictionary<Guid, List<string>> operatoriDaNotificare = new Dictionary<Guid, List<string>>();
+
+            if (idOperatoreAssegnatoPrecedente != idOperatoreAssegnatoSelezionato && idOperatoreAssegnatoSelezionato.HasValue)
+            {
+                operatoriDaNotificare[idOperatoreAssegnatoSelezionato.Value] = new List<string> { "operatore assegnato" };
+            }
+
+            if (idOperatoreEsecutorePrecedente != idOperatoreEsecutoreSelezionato && idOperatoreEsecutoreSelezionato.HasValue)
+            {
+                if (!operatoriDaNotificare.ContainsKey(idOperatoreEsecutoreSelezionato.Value))
+                {
+                    operatoriDaNotificare[idOperatoreEsecutoreSelezionato.Value] = new List<string>();
+                }
+
+                operatoriDaNotificare[idOperatoreEsecutoreSelezionato.Value].Add("operatore esecutore");
+            }
+
+            if (operatoriDaNotificare.Count == 0)
+            {
+                return;
+            }
+
+            foreach (KeyValuePair<Guid, List<string>> operatoreDaNotificare in operatoriDaNotificare)
+            {
+                Entities.Operatore operatore = LogicOperatori.Find(new EntityId<Entities.Operatore>(operatoreDaNotificare.Key));
+                if (operatore != null)
+                {
+                    EmailManager.InviaEmailAssegnazioneAttivitaProgetto(attivita, operatore, operatoreDaNotificare.Value);
                 }
             }
         }
