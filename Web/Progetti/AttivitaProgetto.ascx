@@ -1,6 +1,97 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AttivitaProgetto.ascx.cs" Inherits="SeCoGEST.Web.Progetti.AttivitaProgetto" %>
 <%@ Register Src="~/UI/PageMessage.ascx" TagPrefix="uc1" TagName="PageMessage" %>
 
+<%--<script type="text/javascript">
+
+    function getProgressAreaFromUpload(sender) {
+        debugger;
+        var uploadEl = sender.get_element();
+        var block = uploadEl.closest(".upload-block");
+        if (!block) return null;
+
+        var paEl = block.querySelector(".RadProgressArea");
+        return (paEl && paEl.id) ? $find(paEl.id) : null;
+    }
+
+    function cleanupUploadUi(sender) {
+        debugger;
+        var pa = getProgressAreaFromUpload(sender);
+        if (pa && pa.hide) pa.hide();
+
+        // overlay/mask rimasti
+        var overlay = document.querySelector(
+            "#RadUploadProgressAreaOverlay, .RadUploadProgressAreaOverlay, .rwModalBackground, .rwOverlay, .TelerikModalOverlay"
+        );
+        if (overlay) overlay.style.display = "none";
+
+        document.body.style.overflow = "";
+    }
+
+    // Fine upload OK
+    function onFilesUploaded(sender, args) {
+        cleanupUploadUi(sender);
+    }
+
+    // Fine upload KO
+    function onUploadFailed(sender, args) {
+        cleanupUploadUi(sender);
+    }
+</script>--%>
+
+<script type="text/javascript">
+    function killPageBlocker() {
+        var pb = document.getElementById("divPageBlocker");
+        if (!pb) return;
+
+        // disinnesca qualunque intercettazione click
+        pb.style.pointerEvents = "none";
+
+        // nascondi in modo aggressivo
+        pb.style.display = "none";
+        pb.style.visibility = "hidden";
+        pb.style.opacity = "0";
+
+        // se vuoi essere ancora più deciso: rimuovilo proprio dal DOM
+        if (pb.parentNode) pb.parentNode.removeChild(pb);
+    }
+
+    function cleanupAfterUpload() {
+        // chiudi progress Telerik (ok tenerlo)
+        if (typeof getRadProgressManager === "function") {
+            var pm = getRadProgressManager();
+            if (pm && pm.hideProgressAreas) pm.hideProgressAreas();
+        }
+
+        // <<< QUESTO è il punto chiave >>>
+        killPageBlocker();
+
+        // ripristina scroll se era stato bloccato
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+    }
+
+    function onFilesUploaded(sender, args) { cleanupAfterUpload(); }
+    function onUploadFailed(sender, args) { cleanupAfterUpload(); }
+
+    // Aggancio anche al ciclo AJAX (inizio/fine) così non resta mai appeso
+    (function hookAjaxLifecycle() {
+        if (!(window.Sys && Sys.WebForms && Sys.WebForms.PageRequestManager)) return;
+
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        prm.add_endRequest(function () {
+            cleanupAfterUpload();
+        });
+
+        // opzionale: se vuoi, quando parte una request puoi (ri)mostrare il blocker
+        // prm.add_beginRequest(function () {
+        //   var pb = document.getElementById("divPageBlocker");
+        //   if (pb) pb.style.display = "block";
+        // });
+    })();
+</script>
+
+
 <style type="text/css">
     .noStandardStyle {
         border: none !important;
@@ -286,16 +377,27 @@
                                 <table style="width: 100%; text-align: right;">
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <telerik:RadAsyncUpload
-                                                ID="rauAllegati"
-                                                runat="server"
-                                                MultipleFileSelection="Automatic"
-                                                PostbackTriggers="btUpdate"
-                                                MaxFileInputsCount="10"
-                                                TemporaryFolder="~\App_Data\RadUploadTemp"
-                                                Localization-Remove="Rimuovi" 
-                                                OverwriteExistingFiles="false">
-                                            </telerik:RadAsyncUpload>
+                                            <div class="upload-block">
+                                                <telerik:RadAsyncUpload
+                                                    ID="rauAllegati"
+                                                    runat="server"
+                                                    MultipleFileSelection="Automatic"
+                                                    PostbackTriggers="btUpdate"
+                                                    MaxFileInputsCount="10"
+                                                    TemporaryFolder="~\App_Data\RadUploadTemp"
+                                                    Localization-Remove="Rimuovi"
+                                                    OverwriteExistingFiles="false"
+                                                    OnClientFilesUploaded="onFilesUploaded"
+                                                    OnClientFileUploadFailed="onUploadFailed">
+                                                </telerik:RadAsyncUpload>
+
+                                                <telerik:RadProgressArea
+                                                    ID="rpaUploadAllegati"
+                                                    runat="server"
+                                                    Language="it-IT"
+                                                    RenderMode="Lightweight">
+                                                </telerik:RadProgressArea>
+                                            </div>
                                         </td>
                                         <td style="vertical-align: top;">
                                             <telerik:RadAjaxPanel ID="rapAllegatiAttivita" runat="server" LoadingPanelID="RadAjaxLoadingPanelMaster">

@@ -73,44 +73,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {290CA3BC-3681-4C08-A600-8F322A74BFC8}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tfs.secoges.com:8080/tfs/secoges
-		SccProjectUniqueName0 = Database\\Database.sqlproj
-		SccProjectName0 = Database
-		SccAuxPath0 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath0 = Database
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName1 = Web\\Web.csproj
-		SccProjectName1 = Web
-		SccAuxPath1 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath1 = Web
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = Data\\Data.csproj
-		SccProjectName2 = Data
-		SccAuxPath2 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath2 = Data
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName3 = Entities\\Entities.csproj
-		SccProjectName3 = Entities
-		SccAuxPath3 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath3 = Entities
-		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName4 = Logic\\Logic.csproj
-		SccProjectName4 = Logic
-		SccAuxPath4 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath4 = Logic
-		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName5 = Infrastructure\\Infrastructure.csproj
-		SccProjectName5 = Infrastructure
-		SccAuxPath5 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath5 = Infrastructure
-		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName6 = Helper\\Helper.csproj
-		SccProjectName6 = Helper
-		SccAuxPath6 = http://tfs.secoges.com:8080/tfs/secoges
-		SccLocalPath6 = Helper
-		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-	EndGlobalSection
 EndGlobal

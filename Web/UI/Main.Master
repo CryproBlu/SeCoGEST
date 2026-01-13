@@ -141,6 +141,7 @@
                 <PersistenceSettings>
                 </PersistenceSettings>
             </telerik:RadPersistenceManager>
+            <telerik:RadProgressManager runat="server" ID="rpmProgress" />
 
             <input type="hidden" id="pageRefreshed" value="no" />
 

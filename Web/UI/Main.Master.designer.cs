@@ -60,6 +60,15 @@ namespace SeCoGEST.Web.UI
         protected global::Telerik.Web.UI.RadPersistenceManager mainRadPersistenceManager;
 
         /// <summary>
+        /// Controllo rpmProgress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadProgressManager rpmProgress;
+
+        /// <summary>
         /// Controllo UpdatePanel1.
         /// </summary>
         /// <remarks>
