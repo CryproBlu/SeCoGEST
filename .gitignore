@@ -1,0 +1,19 @@
+﻿################################################################################
+# Il file gitignore è stato creato automaticamente da Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/SeCoGEST
+/Data/bin
+/Data/obj
+/Database/obj/Debug
+/Entities/bin
+/Entities/obj
+/Helper/bin
+/Helper/obj
+/Infrastructure/bin
+/Infrastructure/obj
+/Logic/bin
+/Logic/obj
+/Web/App_Data/RadUploadTemp
+/Web/bin
+/Web/obj
