@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{9d258ce2-e3b7-48f0-b404-e26ee6298146}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <GenerateSqlClrDdl>False</GenerateSqlClrDdl>
+    <GenerateSqlClrSymbols>False</GenerateSqlClrSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="SeCoGEST\" />
+    <Folder Include="SeCoGEST\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="SeCoGEST\Views\" />
+    <Folder Include="SeCoGEST\Functions\" />
+    <Folder Include="SeCoGEST\Stored Procedures\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare1.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="SeCoGEST\Tables\AnalisiVenditaRata.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_Operatore.sql" />
+    <Build Include="SeCoGEST\Tables\Operatore.sql" />
+    <Build Include="SeCoGEST\Tables\ElencoCompletoArticoliPerGestionale.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_Stato.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiVenditaConfigurazioneArticoloAggiuntivo.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiVendita.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCostoArticolo.sql" />
+    <Build Include="SeCoGEST\Tables\VocePredefinitaIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCosto.sql" />
+    <Build Include="SeCoGEST\Tables\Allegato.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCostoRaggruppamento.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCostoArchivioCampoAggiuntivo.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_Articolo.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento.sql" />
+    <Build Include="SeCoGEST\Tables\AccountOperatore.sql" />
+    <Build Include="SeCoGEST\Tables\LogInvioNotifica.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCostoArticoloCampoAggiuntivo.sql" />
+    <Build Include="SeCoGEST\Tables\Offerta.sql" />
+    <Build Include="SeCoGEST\Tables\ModalitaRisoluzioneIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\OffertaArticoloCampoAggiuntivo.sql" />
+    <Build Include="SeCoGEST\Tables\OffertaArchivioCampoAggiuntivo.sql" />
+    <Build Include="SeCoGEST\Tables\OffertaArticolo.sql" />
+    <Build Include="SeCoGEST\Tables\OffertaRaggruppamento.sql" />
+    <Build Include="SeCoGEST\Tables\Account.sql" />
+    <Build Include="SeCoGEST\Tables\Notifica.sql" />
+    <Build Include="SeCoGEST\Tables\InfoOperazioneRecord.sql" />
+    <Build Include="SeCoGEST\Tables\InfoOperazioneRecord_Tabella.sql" />
+    <Build Include="dbo\Views\__SECOGES_Documenti_Contratti.sql" />
+    <Build Include="SeCoGEST\Views\AnalisiDati_TempiInterventi.sql" />
+    <Build Include="SeCoGEST\Views\AnagraficaClienti.sql" />
+    <Build Include="SeCoGEST\Views\ElencoCompletoArticoli.sql" />
+    <Build Include="SeCoGEST\Views\ElencoInterventi.sql" />
+    <Build Include="SeCoGEST\Functions\IsContrattoAttivo.sql" />
+    <Build Include="SeCoGEST\Functions\IsArticoloConCampiAggiuntivi.sql" />
+    <Build Include="SeCoGEST\Functions\GetDataMinoreScadenzaContratto.sql" />
+    <Build Include="SeCoGEST\Functions\GetDataUltimoInvioNotifica.sql" />
+    <Build Include="SeCoGEST\Functions\GetDescrizioneStatoIntervento.sql" />
+    <Build Include="SeCoGEST\Functions\FormatDate.sql" />
+    <Build Include="SeCoGEST\Functions\GetOperatoriPerIntervento.sql" />
+    <Build Include="SeCoGEST\Functions\GetStatoIntervento.sql" />
+    <Build Include="SeCoGEST\Functions\GetElencoCompletoArticoli.sql" />
+    <Build Include="SeCoGEST\Stored Procedures\GetContrattiPerCliente.sql" />
+    <Build Include="SeCoGEST\Stored Procedures\CreaDocXMLInterventi.sql" />
+    <Build Include="Security\SeCoGEST.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiCosti.sql" />
+    <Build Include="Security\Gestionale.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="SeCoGEST\Functions\GetElencoCompletoArticoli2.sql" />
+    <Build Include="SeCoGEST\Stored Procedures\SpostaContrattoCliente_Tutto.sql" />
+    <Build Include="SeCoGEST\Stored Procedures\CopiaContrattoCliente.sql" />
+    <Build Include="SeCoGEST\Tables\TipologiaIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\ConfigurazioneTipologiaTicketCliente.sql" />
+    <Build Include="SeCoGEST\Tables\CaratteristicaTipologiaIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\CaratteristicaIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\ServizioArticolo.sql" />
+    <Build Include="SeCoGEST\Tables\Servizio.sql" />
+    <Build Include="SeCoGEST\Tables\RepartoUfficio.sql" />
+    <Build Include="SeCoGEST\Tables\PeriodoFestivita.sql" />
+    <Build Include="SeCoGEST\Tables\OrarioRepartoUfficio.sql" />
+    <Build Include="SeCoGEST\Tables\OffertaAccountValidatore.sql" />
+    <Build Include="SeCoGEST\Tables\ModelloConfigurazioneTicketCliente.sql" />
+    <Build Include="SeCoGEST\Tables\ModelloConfigurazioneCaratteristicheTicketCliente.sql" />
+    <Build Include="SeCoGEST\Tables\MappaturaGruppoCategoriaCategoriaStatistica.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_OrarioRepartoUfficio.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_Discussione.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_ConfigurazioneTipologiaTicketCliente.sql" />
+    <Build Include="SeCoGEST\Tables\Intervento_CaratteristicaTipologiaIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\CondizioneIntervento.sql" />
+    <Build Include="SeCoGEST\Tables\ClausolaVessatoria.sql" />
+    <Build Include="SeCoGEST\Tables\AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria.sql" />
+    <Build Include="SeCoGEST\Tables\AnagraficaSoggetti_Proprieta.sql" />
+    <Build Include="SeCoGEST\Views\Statistiche_Fatturato.sql" />
+    <Build Include="SeCoGEST\Views\InterventiConAreeMultiple.sql" />
+    <Build Include="SeCoGEST\Views\IdInterventiConAreeMultiple.sql" />
+    <Build Include="dbo\Views\InterventiAnnuiPerOperatore.sql" />
+    <Build Include="SeCoGEST\Views\InterventiAnnuiPerOperatore.sql" />
+    <Build Include="SeCoGEST\Views\ElencoInterventiAnno.sql" />
+    <Build Include="SeCoGEST\Stored Procedures\RiapriTicket.sql" />
+    <Build Include="SeCoGEST\Tables\Progetto_Operatore.sql" />
+    <Build Include="SeCoGEST\Tables\Progetto_Attivita.sql" />
+    <Build Include="SeCoGEST\Tables\Progetto.sql" />
+    <Build Include="SeCoGEST\Tables\Attivita.sql" />
+  </ItemGroup>
+</Project>

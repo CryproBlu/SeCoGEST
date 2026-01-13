@@ -1,0 +1,6 @@
+﻿CREATE TABLE [SeCoGEST].[Attivita] (
+    [ID]          UNIQUEIDENTIFIER NOT NULL,
+    [Descrizione] NVARCHAR (4000)  NOT NULL,
+    CONSTRAINT [PK_Attivita] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

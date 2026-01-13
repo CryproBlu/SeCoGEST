@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72942C15-22DC-4FDE-87A2-106702FA97B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SeCoGEST.Entities</RootNamespace>
+    <AssemblyName>SeCoGEST.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SeCoGes.Utilities">
+      <HintPath>..\lib\SeCoGes.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountOperatore.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="Progetto_Attivita.cs" />
+    <Compile Include="Allegato.cs" />
+    <Compile Include="AnagraficaDestinazioneMerce.cs" />
+    <Compile Include="AnagraficaSoggetti_Proprieta.cs" />
+    <Compile Include="AnalisiVenditaConfigurazioneArticoloAggiuntivo.cs" />
+    <Compile Include="CaratteristicaInterventoEnum.cs" />
+    <Compile Include="Database1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Offerta.cs" />
+    <Compile Include="OffertaArticolo.cs" />
+    <Compile Include="OffertaRaggruppamento.cs" />
+    <Compile Include="OffertaRaggruppamentoOpzioneStampaOffertaEnum.cs" />
+    <Compile Include="PeriodoFestivita.cs" />
+    <Compile Include="CaratteristicaSLA.cs" />
+    <Compile Include="CaratteristicaTipologiaIntervento.cs" />
+    <Compile Include="CondizioneIntervento.cs" />
+    <Compile Include="CondizioneInterventoEnum.cs" />
+    <Compile Include="ConfigurazioneTipologiaTicketCliente.cs" />
+    <Compile Include="ElencoCompletoArticoli.cs" />
+    <Compile Include="EntityIdentifier.cs" />
+    <Compile Include="Notifiche\ElencoNotificaDaInviare.cs" />
+    <Compile Include="EntityId.cs" />
+    <Compile Include="EntityInt.cs" />
+    <Compile Include="EntityString.cs" />
+    <Compile Include="InfoOperazioneTabellaEnum.cs" />
+    <Compile Include="Notifiche\InformazioneNotiticaDaInviareDTO.cs" />
+    <Compile Include="InformazioniContratto.cs" />
+    <Compile Include="InfoTipoOperazioneRecordEnum.cs" />
+    <Compile Include="Intervento.cs" />
+    <Compile Include="Intervento_Articolo.cs" />
+    <Compile Include="Intervento_Operatore.cs" />
+    <Compile Include="Intervento_Stato.cs" />
+    <Compile Include="LogInvioNotifica.cs" />
+    <Compile Include="Notifiche\NotificaDaInviareAdEmailSpecificaDTO.cs" />
+    <Compile Include="Notifiche\NotificaDaInviareDTO.cs" />
+    <Compile Include="Operatore.cs" />
+    <Compile Include="Progetto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="OrarioRepartoUfficio.cs" />
+    <Compile Include="FiltroInterventoEnum.cs" />
+    <Compile Include="StatoProgettoEnum.cs" />
+    <Compile Include="StatoInterventoEnum.cs" />
+    <Compile Include="StatoOffertaEnum.cs" />
+    <Compile Include="TipologiaAccountEnum.cs" />
+    <Compile Include="TipologiaAllegatoEnum.cs" />
+    <Compile Include="TipologiaAnalisiVenditaConfigurazioneArticoloAggiuntivo.cs" />
+    <Compile Include="TipologiaNotificaEnum.cs" />
+    <Compile Include="TipologiaInterventoEnum.cs" />
+    <Compile Include="TipologiaGiornateEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Database.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Database1.designer.cs</LastGenOutput>
+    </None>
+    <None Include="Database.dbml.namePrefs">
+      <DependentUpon>Database.dbml</DependentUpon>
+    </None>
+    <None Include="Database.dbml.syncPrefs">
+      <DependentUpon>Database.dbml</DependentUpon>
+    </None>
+    <None Include="Database.dbml.views">
+      <DependentUpon>Database.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database.dbml.layout">
+      <DependentUpon>Database.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{ae7e6629-5475-43e9-908a-f2f83d4379ca}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

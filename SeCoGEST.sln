@@ -1,0 +1,116 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5514312A-E1EE-4AE4-9C5B-ED9A7C995318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{72942C15-22DC-4FDE-87A2-106702FA97B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{31AC7C26-C85B-4762-85A8-125338596091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F3052270-76FD-4185-B42B-C3350D0433E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{AE7E6629-5475-43E9-908A-F2F83D4379CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentazione", "Documentazione", "{61F1C4C7-1A32-4C17-884B-BE8F6AEB4E89}"
+	ProjectSection(SolutionItems) = preProject
+		_Documentazione\Modifiche Database.txt = _Documentazione\Modifiche Database.txt
+		_Documentazione\Modifiche Web.Config.txt = _Documentazione\Modifiche Web.Config.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modelli", "Modelli", "{F5A43C35-9A03-4370-BB5E-62E3CC5429F7}"
+	ProjectSection(SolutionItems) = preProject
+		_Documentazione\Modelli\Modello_Documento_Intervento.dot = _Documentazione\Modelli\Modello_Documento_Intervento.dot
+		_Documentazione\Modelli\Modello_Invio_Offerta_Al_Cliente.html = _Documentazione\Modelli\Modello_Invio_Offerta_Al_Cliente.html
+		_Documentazione\Modelli\Modello_Offerta.docx = _Documentazione\Modelli\Modello_Offerta.docx
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{9D258CE2-E3B7-48F0-B404-E26EE6298146}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5514312A-E1EE-4AE4-9C5B-ED9A7C995318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5514312A-E1EE-4AE4-9C5B-ED9A7C995318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5514312A-E1EE-4AE4-9C5B-ED9A7C995318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5514312A-E1EE-4AE4-9C5B-ED9A7C995318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72942C15-22DC-4FDE-87A2-106702FA97B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72942C15-22DC-4FDE-87A2-106702FA97B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72942C15-22DC-4FDE-87A2-106702FA97B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72942C15-22DC-4FDE-87A2-106702FA97B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31AC7C26-C85B-4762-85A8-125338596091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31AC7C26-C85B-4762-85A8-125338596091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31AC7C26-C85B-4762-85A8-125338596091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31AC7C26-C85B-4762-85A8-125338596091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3052270-76FD-4185-B42B-C3350D0433E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3052270-76FD-4185-B42B-C3350D0433E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3052270-76FD-4185-B42B-C3350D0433E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3052270-76FD-4185-B42B-C3350D0433E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7E6629-5475-43E9-908A-F2F83D4379CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7E6629-5475-43E9-908A-F2F83D4379CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7E6629-5475-43E9-908A-F2F83D4379CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7E6629-5475-43E9-908A-F2F83D4379CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D258CE2-E3B7-48F0-B404-E26EE6298146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D258CE2-E3B7-48F0-B404-E26EE6298146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D258CE2-E3B7-48F0-B404-E26EE6298146}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5A43C35-9A03-4370-BB5E-62E3CC5429F7} = {61F1C4C7-1A32-4C17-884B-BE8F6AEB4E89}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {290CA3BC-3681-4C08-A600-8F322A74BFC8}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.secoges.com:8080/tfs/secoges
+		SccProjectUniqueName0 = Database\\Database.sqlproj
+		SccProjectName0 = Database
+		SccAuxPath0 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath0 = Database
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = Web\\Web.csproj
+		SccProjectName1 = Web
+		SccAuxPath1 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath1 = Web
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = Data\\Data.csproj
+		SccProjectName2 = Data
+		SccAuxPath2 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath2 = Data
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = Entities\\Entities.csproj
+		SccProjectName3 = Entities
+		SccAuxPath3 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath3 = Entities
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = Logic\\Logic.csproj
+		SccProjectName4 = Logic
+		SccAuxPath4 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath4 = Logic
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = Infrastructure\\Infrastructure.csproj
+		SccProjectName5 = Infrastructure
+		SccAuxPath5 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath5 = Infrastructure
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = Helper\\Helper.csproj
+		SccProjectName6 = Helper
+		SccAuxPath6 = http://tfs.secoges.com:8080/tfs/secoges
+		SccLocalPath6 = Helper
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

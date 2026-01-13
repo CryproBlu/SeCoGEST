@@ -1,0 +1,29 @@
+﻿
+/* UTENTI */
+.ComboUtenti {
+    width:100%; 
+    min-width:300px;
+}
+
+.ComboUtenti_Header_ColonnaUserName {
+    width:60px; 
+    padding-right:5px;
+}
+
+.ComboUtenti_Item_ColonnaUserName {
+    width:60px; 
+    padding-right:5px;
+    word-wrap: break-word; 
+    white-space: normal;
+    vertical-align: middle;
+    line-height:1.5; 
+    text-align:left;
+}
+
+.ComboUtenti_Item_ColonnaNominativo {
+    word-wrap: break-word; 
+    white-space: normal;
+    vertical-align: middle;
+    line-height:1.5; 
+    text-align:left;
+}

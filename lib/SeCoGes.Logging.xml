@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SeCoGes.Logging</name>
+    </assembly>
+    <members>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogAccessi(System.String)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli accessi utente
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogAccessi(System.String,System.String)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli accessi utente
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogAccessi(System.String,System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli accessi utente
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+            <param name="severity"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogOperazioni(System.String)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo alle operazioni utenti
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogOperazioni(System.String,System.String)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo alle operazioni utenti
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogOperazioni(System.String,System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo alle operazioni utenti
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+            <param name="severity"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogErrori(System.String)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli errori
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogErrori(System.String,System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli errori
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogErrori(System.Exception)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo alle eccezioni
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogErrori(System.String,System.Exception)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli errori
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.AddLogErrori(System.String,System.Exception,System.Diagnostics.TraceEventType)">
+            <summary>
+            Carica il messaggio indicato nel file di log relativo agli errori
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.SendLogViaEmail(System.String)">
+            <summary>
+            Invia il messaggio passato come parametro tramite email
+            </summary>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.SendLogViaEmail(System.String,System.String)">
+            <summary>
+            Invia il messaggio passato come parametro tramite email
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+        </member>
+        <member name="M:SeCoGes.Logging.LogManager.SendLogViaEmail(System.String,System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Invia il messaggio passato come parametro tramite email
+            </summary>
+            <param name="userName"></param>
+            <param name="logMessage"></param>
+            <param name="severity"></param>
+        </member>
+        <member name="P:SeCoGes.Logging.LogManager.UserNameForLog">
+            <summary>
+            Restituisce l'utente da inserire nel log
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Logging.UserHelper.GetLoggedUserName(SeCoGes.Logging.UserTypeEnum)">
+            <summary>
+            Restituisce l'utente loggato in base alla tipologia passata, se quest'ultima è null viene effettuata una ricerca di un utente loggato
+            </summary>
+            <param name="userInformationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Logging.UserHelper.WebEnvironmentUserName">
+            <summary>
+            Restituisce l'username presente nell'HttpContext
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Logging.UserHelper.WindowsEnvironmentUserName">
+            <summary>
+            Restituisce l'username dell'utente loggato in windows
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Logging.UserHelper.GetFirstNotEmptyString(System.String[])">
+            <summary>
+            Verifica tutte le stringhe passate come parametro, la prima che non è una stringa vuota viene restituita
+            </summary>
+            <param name="stringhe"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

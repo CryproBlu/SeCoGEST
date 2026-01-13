@@ -1,0 +1,142 @@
+﻿.mainWrap {
+     padding: 70px 0 0;
+     width: 602px;
+     height: 293px;
+}
+ 
+.btnWrap {
+     width: 221px;
+     margin: auto;
+     padding: 6px;
+     background-color: #000;
+     border-radius: 4px;
+}
+ 
+/*span.rbLinkButton.RadButton.tasks,
+span.rbLinkButton.RadButton.people,
+span.rbLinkButton.RadButton.vehicles,
+span.rbLinkButton.RadButton.email {
+     position: relative;
+     padding: 0;
+     margin: 3px;
+     border: 0;
+     border: 6px solid;
+}*/
+
+/*
+span.RadButton_MetroTouch.rbSkinnedButton:hover,
+span.RadButton_MetroTouch.rbLinkButton:hover,
+span.RadButton_MetroTouch.rbVerticalButton:hover {
+    border: 3px solid #000000 !important;
+}*/
+
+span.rbLinkButton.RadButton.RadButton.tasks:hover,
+span.rbLinkButton.RadButton.people:hover,
+span.rbLinkButton.RadButton.vehicles:hover,
+span.rbLinkButton.RadButton.email:hover,
+span.rbLinkButton.RadButton.RadButton.tasks:hover span.btnText,
+span.rbLinkButton.RadButton.people:hover span.btnText,
+span.rbLinkButton.RadButton.vehicles:hover span.btnText,
+span.rbLinkButton.RadButton.email:hover span.btnText {
+     border-color: #ffffff;
+     color:#ffffff;
+}
+ 
+span.rbLinkButton.RadButton.tasks,
+span.rbLinkButton.RadButton.people {
+     margin-bottom: 6px;
+}
+ 
+.btnText {
+     display: block;
+     height: 14px;
+     line-height: 14px;
+     left: 5px;
+     bottom: 5px;
+     color : #000;
+}
+ 
+span.rbLinkButton.RadButton.tasks {
+     background-color: #25A0DA;    
+     text-align: center;
+     vertical-align: middle;
+     border-color: #25A0DA;
+}
+
+/*span.rbLinkButton.RadButton.tasks:hover,
+span.RadButton_MetroTouch.RadButton:hover {
+     background-color: #247ED8;
+}*/
+
+span.rbLinkButton.RadButton.tasks:hover,
+span.RadButton_MetroTouch.RadButton:hover {
+    background-color: #247ED8 !important;
+}
+
+span.rbLinkButton.RadButton.RadButton.tasks:active,
+span.rbLinkButton.RadButton.people:active,
+span.rbLinkButton.RadButton.vehicles:active,
+span.rbLinkButton.RadButton.email:active,
+span.rbLinkButton.RadButton.RadButton.tasks:active span.btnText,
+span.rbLinkButton.RadButton.people:active span.btnText,
+span.rbLinkButton.RadButton.vehicles:active span.btnText,
+span.rbLinkButton.RadButton.email:active span.btnText {
+     background-color: #25A0DA !important;
+}
+
+/*span.RadButton_MetroTouch.RadButton:active {
+    background-color: #25A0DA !important;
+}*/
+
+ 
+span.rbLinkButton.RadButton.tasks img {
+     vertical-align: middle;
+     /*margin-top: -10px;*/
+}
+ 
+span.rbLinkButton.RadButton.people {
+     background-color: #ff6900;
+     border-color: #ff6900;
+}
+ 
+span.rbLinkButton.RadButton.people:hover {
+     background-color: #ff6900;
+}
+ 
+span.rbLinkButton.RadButton.vehicles {
+     background-color: #25a0da;
+     text-align: right;
+     border-color: #25a0da;
+}
+ 
+span.rbLinkButton.RadButton.vehicles:hover {
+     background-color: #25a0da;
+}
+ 
+span.rbLinkButton.RadButton.email {
+     background-color: #ed1691;
+     text-align: center;
+     border-color: #ed1691;
+}
+ 
+span.rbLinkButton.RadButton.email:hover {
+     background-color: #ed1691;
+}
+ 
+span.rbLinkButton.RadButton.email img {
+     vertical-align: middle;
+     margin-top: -10px;
+}
+ 
+* + html span.rbLinkButton.RadButton.tasks img,
+* + html span.rbLinkButton.RadButton.people img {
+     margin-top: -28px;
+}
+ 
+* + html span.rbLinkButton.RadButton.vehicles img {
+     margin-top: -15px;
+}
+ 
+* + html span.rbLinkButton.RadButton.email img {
+     margin-top: 8px;
+}

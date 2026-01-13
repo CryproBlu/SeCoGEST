@@ -1,0 +1,17 @@
+﻿@page port {size: portrait;}
+@page land {size: landscape;}
+
+.portrait {
+    page: port;
+}
+
+.landscape {
+    page: land;
+}
+
+.NascondiInStampa
+{
+  visibility:hidden;
+  display:none;
+  
+}

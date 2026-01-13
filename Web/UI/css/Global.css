@@ -1,0 +1,353 @@
+﻿.rgMobileEditForm .rgMobileForm .rgLabel {
+    float: left;
+}
+
+div#intestazione div.Logo {
+    padding-top: 0px; 
+    padding-left: 7px;  
+    padding-right: 0px;
+    padding-bottom: 0px; 
+}
+
+div#intestazione div.AltezzaIntestazioni {
+}
+
+div#intestazione div.InformazioniPerUtente {
+    margin-top: 17px; 
+    float: right;
+}
+
+div#intestazione div.Titolo {
+    margin-top: 10px;
+}
+
+
+div#intestazione {
+    background-color:#5467AA; 
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:5px;
+    color: #FFF;
+    position:relative;
+}
+
+div#contenitore {
+    position:relative;
+    /*flex-direction:column;
+    display:flex;*/
+    /*height:100%;*/
+}
+
+div#corpoDellaPagina {
+    /*display: flex;
+    flex-direction: column;*/    
+}
+
+div#contenitore > div#corpoDellaPagina {
+    /*flex: 1 1 0;*/
+    /*overflow: auto;*/
+}
+
+html, body, form {
+    font-family: verdana;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+div#intestazione .skinLabelBig
+{
+    font-family: verdana;
+    font-size: 24px !important;
+}
+
+div#intestazione .skinLabelMedium
+{
+    font-family: verdana;
+    font-size: 16px !important;
+}
+
+div#intestazione .skinLabelSmall
+{
+    font-family: verdana;
+    font-size: 12px !important;
+}
+
+/* MASTER PAGE*/
+#divContainer {
+    overflow: auto; 
+    height: 100%; 
+    width: 100%; 
+    position: relative; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px;
+}
+
+#divContenitore {
+    position: fixed; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px; 
+    overflow:auto; 
+    z-index:0;
+}
+
+#divBody {
+    position: fixed; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px;
+}
+
+
+.DataOraServer {
+    padding-top:5px;
+}
+
+.nascosto {
+    display:none;
+}
+
+
+
+
+
+/* FINE MASTER PAGE*/
+
+
+
+
+
+/* Stile dei pulsanti di edit interno delle griglie telerik */
+.EditButtonStyle td
+{
+    border-top: solid 1px black;
+    padding: 15px;
+}
+.EditButtonStyle a
+{
+    /*font-size: 16px;*/
+    border: solid 1px gray;
+    background-color: whitesmoke;
+    padding: 5px;
+}
+.EditButtonStyle a:first-child
+{
+    margin-right:10px;
+}
+
+.ValoreInfoModelloStampa {
+    text-align:left;
+}
+
+.BordoValoreInfoModelloStampaElencoApparecchiature {
+    border-left: 1px solid;
+}
+
+.UpperCaseText {
+    text-transform:uppercase;
+}
+
+
+/* AGGIUNTO IL 12/05/2015 */
+/* 'personaleSezioneDisponibile' è una classe css che viene applicata nella pagina delle disponibilità ai checkbox associati a delle sezioni a cui un utente ha dato disponibilità */
+.rfdLabel span.personaleSezioneDisponibile label {
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.AllineaElementiAlCentro {
+    text-align:center;
+}
+
+
+
+.ValidationSummaryStyle
+{
+    background-color: yellow;
+    font-weight: bold;
+    color: black;
+    border: 2px Solid Gray;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*body 
+{
+  font-family: verdana;
+  font-size: 12px;
+}
+
+
+
+.TabellaContenitoreView
+{
+    width:1000px;
+}*/
+
+.SpaziaturaSuperioreRiga{
+    padding-top:7px;
+}
+
+.SpaziaturaSuperioreGruppo{
+    padding-top:20px;
+}
+
+/*.SfondoPagina
+{
+    margin: 0px; 
+    padding: 3px; 
+    background-color:#F0F4FB;
+    background-image: url(/UI/Images/gradientBar.png);
+    background-position: bottom;
+    background-repeat:repeat-x;
+}
+
+.SfondoPannelloDati
+{
+    color:Black;
+    background-color:#BDDAFF;
+    border:1px Solid #ABC1DE;
+}
+
+.LabelComeTextBoxDisabilitata
+{
+    background-color:#F5F5F5;
+    border:1px Solid #ABC1DE;
+    padding:4px;
+}
+
+.SchedaTitolo
+{
+    color: #FFFFFF;
+    background-color: #25A0DA;
+    white-space: nowrap;
+    
+    padding:7px;
+    font-family: Verdana;
+    font-size: 12pt;
+    font-variant: small-caps;
+    text-indent: 3px;
+}*/
+
+/*.PannelloTestoGuida {
+    background-color:#BDDAFF;
+    color:black;*/
+    /*width:100%;*/
+    /*padding:15px;
+    border:solid 1px #F1B000;
+ }*/
+
+/*.ColoreSfondoNeutro
+{
+    background-color: White;
+}
+
+.ColoreSfondoDefault
+{
+    background-color: #C3DDFB;
+}
+*/
+.ColoreSfondoEvidenziato
+{
+    background-color: #5467AA;
+    color:white;
+}
+.ColoreSfondoBloccato
+{
+    background-color: #C2DCFC;
+    color:black;
+}
+/*
+.ColoreTestoDefault
+{
+    color: #00478F;
+}
+
+.ColoreTestoReverse
+{
+    color: White;
+}
+*/
+
+.AllineaDestra
+{
+    text-align:right;
+}
+
+.AllineaCentro
+{
+    text-align:center;
+}
+
+.AllineaSinistra
+{
+    text-align:left;
+}
+
+.AreaCliccabile
+{
+    cursor:pointer;
+}
+
+/*table.NessunBordo, table.NessunBordo td*/
+table.NessunBordo
+{
+    border:0px solid transparent;
+    padding:0px;
+    margin:0px;
+}
+.noBorder{
+    border:0px solid transparent;
+    padding:0px;
+    margin:0px;
+}
+
+tr.rgRow td.NessunBordo, tr.rgRow > td.NessunBordo {
+    border:0px solid transparent;
+    padding:0px;
+    margin:0px;
+}
+
+
+
+
+.AnalisiCostoRaggruppamentoExpanderHeader {
+    border: solid 1px silver;
+    background-color: #5467AA;
+    color:white;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.AnalisiCostoRaggruppamentoExpanderItem {
+    background-color: white;
+    color: black;
+}
+
+.OffertaRaggruppamentoExpanderHeader {
+    border: solid 1px silver;
+    background-color: #5467AA;
+    color:white;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.OffertaRaggruppamentoExpanderItem {
+    background-color: white;
+    color: black;
+}

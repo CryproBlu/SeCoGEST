@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0C4DA19-26B2-42E3-AFA2-7D1EFC1C2706}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SeCoGEST.Data</RootNamespace>
+    <AssemblyName>SeCoGEST.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SeCoGes.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SeCoGes.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Allegati.cs" />
+    <Compile Include="AnalisiVenditeConfigurazioneArticoliAggiuntiviClausoleVessatorie.cs" />
+    <Compile Include="ClausoleVessatorie.cs" />
+    <Compile Include="Attività.cs" />
+    <Compile Include="Progetto_Attività.cs" />
+    <Compile Include="Progetto_Operatori.cs" />
+    <Compile Include="Progetti.cs" />
+    <Compile Include="Intervento_CaratteristicheTipologieIntervento.cs" />
+    <Compile Include="Intervento_ConfigurazioniTipologieTicketCliente.cs" />
+    <Compile Include="AnagraficaSoggettiProprieta.cs" />
+    <Compile Include="Intervento_Discussioni.cs" />
+    <Compile Include="Intervento_OrariRepartiUfficio.cs" />
+    <Compile Include="MappatureGruppiCategorieCategorieStatistiche.cs" />
+    <Compile Include="Metodo\AnagraficheArticoli.cs" />
+    <Compile Include="Metodo\BancheClienti.cs" />
+    <Compile Include="Metodo\Pagamenti.cs" />
+    <Compile Include="Metodo\PagamentiClienti.cs" />
+    <Compile Include="OfferteAccountValidatori.cs" />
+    <Compile Include="ServiziArticoli.cs" />
+    <Compile Include="Servizi.cs" />
+    <Compile Include="PeriodiFestivita.cs" />
+    <Compile Include="OrariRepartiUfficio.cs" />
+    <Compile Include="RepartiUfficio.cs" />
+    <Compile Include="CaratteristicheTipologieIntervento.cs" />
+    <Compile Include="OfferteRaggruppamenti.cs" />
+    <Compile Include="OfferteArticoloCampiAggiuntivi.cs" />
+    <Compile Include="OfferteArticoli.cs" />
+    <Compile Include="OfferteArchivioCampiAggiuntivi.cs" />
+    <Compile Include="Offerte.cs" />
+    <Compile Include="AnalisiCosti.cs" />
+    <Compile Include="Accounts.cs" />
+    <Compile Include="AccountsOperatori.cs" />
+    <Compile Include="AnalisiCostiArchivioCampiAggiuntivi.cs" />
+    <Compile Include="AnalisiCostiArticoli.cs" />
+    <Compile Include="AnalisiCostiArticoloCampiAggiuntivi.cs" />
+    <Compile Include="AnalisiCostiRaggruppamenti.cs" />
+    <Compile Include="AnalisiVendite.cs" />
+    <Compile Include="AnalisiVenditeConfigurazioneArticoliAggiuntivi.cs" />
+    <Compile Include="AnalisiVenditeRate.cs" />
+    <Compile Include="InfoOperazioniRecord.cs" />
+    <Compile Include="InfoOperazioniRecord_Tabelle.cs" />
+    <Compile Include="LogInvioNotifiche.cs" />
+    <Compile Include="Metodo\DestinazioniDiverse.cs" />
+    <Compile Include="Interventi.cs" />
+    <Compile Include="Intervento_Articoli.cs" />
+    <Compile Include="Intervento_Operatori.cs" />
+    <Compile Include="Intervento_Stati.cs" />
+    <Compile Include="Metodo\AnagraficheClienti.cs" />
+    <Compile Include="Metodo\Archivi.cs" />
+    <Compile Include="Metodo\ElenchiCompletiArticoli.cs" />
+    <Compile Include="ModalitaRisoluzioneInterventi.cs" />
+    <Compile Include="Notifiche.cs" />
+    <Compile Include="CaratteristicheIntervento.cs" />
+    <Compile Include="ConfigurazioniTipologieTicketCliente.cs" />
+    <Compile Include="ModelloConfigurazioneTicketCliente.cs" />
+    <Compile Include="ModelliConfigurazioneCaratteristicheTicketClient.cs" />
+    <Compile Include="CondizioniIntervento.cs" />
+    <Compile Include="TipologieIntervento.cs" />
+    <Compile Include="Operatori.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VociPredefiniteInterventi.cs" />
+    <Compile Include="_Base\DataAccess.cs" />
+    <Compile Include="_Base\Database.cs" />
+    <Compile Include="_Base\DataLayerBase.cs" />
+    <Compile Include="_Base\EntitiesDataContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{72942c15-22dc-4fde-87a2-106702fa97b7}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

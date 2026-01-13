@@ -1,0 +1,911 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SeCoGes.Utilities</name>
+    </assembly>
+    <members>
+        <member name="M:SeCoGes.Utilities.DataContextUtility.GetTableName(System.Data.Linq.DataContext,System.Object)">
+            <summary>
+            Restituisce il nome della tabella all'oggetto passato come parametro
+            </summary>
+            <param name="context"></param>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.DataContextUtility.GetTableName(System.Data.Linq.DataContext,System.Object,System.Boolean)">
+            <summary>
+            Restituisce il nome della tabella all'oggetto passato come parametro
+            </summary>
+            <param name="context"></param>
+            <param name="entity"></param>
+            <param name="manageException"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.DataContextUtility.GetTableName(System.Data.Linq.DataContext,System.Type)">
+            <summary>
+            Restituisce il nome della tabella dal tipo passato come parametro
+            </summary>
+            <param name="context"></param>
+            <param name="entityType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.DataContextUtility.GetTableName(System.Data.Linq.DataContext,System.Type,System.Boolean)">
+            <summary>
+            Restituisce il nome della tabella dal tipo passato come parametro
+            </summary>
+            <param name="context"></param>
+            <param name="entityType"></param>
+            <param name="manageException"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SeCoGes.Utilities.DateTimeUtility">
+            <summary>
+            Classe di utility per la date
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.DateTimeUtility.GetOverlappingDays(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Restituisce il numero di giorni di sovrapposizione fra i 2 periodi passati
+            </summary>
+            <param name="period1DateStart">Data di inizio del periodo 1</param>
+            <param name="period1DateEnd">Data di fine del periodo 1</param>
+            <param name="period2DateStart">Data di inizio del periodo 2</param>
+            <param name="period2DateEnd">Data di fine del periodo 2</param>
+            <returns>Numero di giorni di sovrapposizione fra i 2 periodi passati</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.DateTimeUtility.AreOverlappingTimes(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Restituisce un valore booleano che indica se ci sono delle sovrapposizioni di tempo fra i 2 periodi passati
+            </summary>
+            <param name="period1DateStart">Data di inizio del periodo 1</param>
+            <param name="period1DateEnd">Data di fine del periodo 1</param>
+            <param name="period2DateStart">Data di inizio del periodo 2</param>
+            <param name="period2DateEnd">Data di fine del periodo 2</param>
+            <returns>Numero di giorni di sovrapposizione fra i 2 periodi passati</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.DateTimeUtility.GetEtaDaDataNascita(System.DateTime)">
+            <summary>
+            Restituisce l'età in anni in base alla data di nascita passata
+            </summary>
+            <param name="dataNascitaDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.DateTimeUtility.GiornoInLettere(System.DayOfWeek)">
+            <summary>
+            Effettua la traduzione del giorno della settimana passato come parametro in lettere
+            </summary>
+            <param name="giorno"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.DateTimeUtility.ToShortDateString(System.DateTime)">
+            <summary>
+            Restituisce la data passata in stringa nel formato italiano giorno/mese/anno
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SeCoGes.Utilities.OnCompleted_EventHargsHandler">
+            <summary>
+            Delegate per la gestione dell'evento OnCompleted
+            </summary>
+        </member>
+        <member name="T:SeCoGes.Utilities.Exceptions.TipoOperazione">
+            <summary>
+            Enumeratore indicante il tipo di operazione
+            </summary>
+        </member>
+        <member name="F:SeCoGes.Utilities.Exceptions.TipoOperazione.Modifica">
+            <summary>
+            Operazione di modifica
+            </summary>
+        </member>
+        <member name="F:SeCoGes.Utilities.Exceptions.TipoOperazione.Eliminazione">
+            <summary>
+            Operazione di eliminazione
+            </summary>
+        </member>
+        <member name="T:SeCoGes.Utilities.Exceptions.ConcurrencyException">
+            <summary>
+            Scatena una Eccezione di tipo Concurrency 
+            Da utilizzarsi qualora si verifiche un errore di concorrenza nella memorizzazione dei dati sul db
+            </summary>
+        </member>
+        <member name="T:SeCoGes.Utilities.Exceptions.OptimisticConcurrencyFaultException">
+            <summary>
+            Classe di gestione delle OptimisticConcurrencyFaultException
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.Exceptions.OptimisticConcurrencyFaultException.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.Exceptions.OptimisticConcurrencyFaultException.#ctor(System.String)">
+            <summary>
+            Costruttore
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.Exceptions.OptimisticConcurrencyFaultException.#ctor(System.Exception)">
+            <summary>
+            Costruttore
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.Exceptions.OptimisticConcurrencyFaultException.#ctor(System.String,System.Exception)">
+            <summary>
+            Costruttore
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ReplaceNonStandardChars(System.String)">
+            <summary>
+            Sostituisce i caratteri non standard in caratteri standard (accettati anche da BE))
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.Val(System.String)">
+            <summary>
+            Restituisce il valore numerico della stringa passata
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsFloatNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo float
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsShortNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo short
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsDecimalNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo decimal
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsDoubleNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo double
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsByteNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo byte
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsIntegerNumber(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è un numero di tipo int
+            </summary>
+            <param name="stringa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToTrimmedString(System.String)">
+            <summary>
+            Restituisce un oggetto System.String senza gli eventuali spazi all'inizio ed alla fine della stringa (restituisce String.Empty se il parametro passato è Null).
+            Non genera errori se viene passato Nothing
+            </summary>
+            <param name="stringa">Stringa con spazi</param>
+            <returns>Stringa senza spazi</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToTrimmedString(System.Object)">
+            <summary>
+            Restituisce un oggetto System.String senza gli eventuali spazi all'inizio ed alla fine della stringa (restituisce String.Empty se il parametro passato è Nothing).
+            </summary>
+            <param name="Item">Stringa con spazi</param>
+            <returns>Stringa senza spazi</returns>
+            <remarks>Non genera errori se viene passato Nothing</remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsValidIpAddress(System.String)">
+            <summary>
+            Restituisce un valore booleano che indica se il valore della stringa passata è valido come indirizzo IP
+            </summary>
+            <param name="stringContenenteIp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToFileName(System.String)">
+            <summary>
+            Pulisce la stringa dai caratteri non accettati per i nomi dei files
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToVBCRLFfromBR(System.String)">
+            <summary>
+            Effettua la sostituzione del tag <br/> con la costante vbCrLf
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToVBCRLFfromBR(System.Object)">
+            <summary>
+            Effettua la sostituzione del tag <br/> con la costante vbCrLf
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToBRfromVBCRLF(System.String)">
+            <summary>
+            Effettua la sostituzione della costante vbCrLf con il tag <br/>
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToBRfromVBCRLF(System.Object)">
+            <summary>
+            Effettua la sostituzione della costante vbCrLf con il tag <br/>
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToInformixFormat(System.String)">
+            <summary>
+            Restituisce la stringa ripulita e contenente i caratteri consentiti ad Informix
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsNullOrEmpty(System.Guid)">
+            <summary>
+            Controlla se il Guid è nullo o abbia valore Guid.Empty
+            </summary>
+            <param name="guidDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsNullOrEmpty(System.Nullable{System.Guid})">
+            <summary>
+            Controlla se il Guid è nullo o abbia valore Guid.Empty
+            </summary>
+            <param name="guidDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsEmpty(System.Guid)">
+            <summary>
+            Controlla se il Guid abbia valore Guid.Empty
+            </summary>
+            <param name="Item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableDate(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo Short nullabile
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableDateBetween1950and2050(System.String)">
+            <summary>
+            Trasforma la stringa in un DateTime nullabile con valore tra il 1950 e 2050 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsDate(System.String)">
+            <summary>
+            Controlla se la stringa passata è una data valida
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsNullOrMinValue(System.DateTime)">
+            <summary>
+            Controlla se la data è nulla o abbia valore pari a DateTime.MinValue
+            </summary>
+            <param name="dataDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsNullOrMinValue(System.Nullable{System.DateTime})">
+            <summary>
+            Controlla se la data è nulla o abbia valore pari a DateTime.MinValue
+            </summary>
+            <param name="dataDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.GetEtaDaDataNascita(System.DateTime)">
+            <summary>
+            Restituisce l'età rispetto ad oggi di una persona nata nella data di nascita in esame
+            </summary>
+            <param name="dataNascitaDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.GetBimestre(System.DateTime)">
+            <summary>
+            Recupera il bimestre, rispetto all'inizio dell'anno della data in esame
+            </summary>
+            <param name="dataDaSondare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToMyShortDateString(System.DateTime)">
+            <summary>
+            Restituisce sottoforma di stringa la data short (esempio 12/02/2014)
+            </summary>
+            <param name="DateValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToMyShortDateString(System.Nullable{System.DateTime})">
+            <summary>
+            Restituisce sottoforma di stringa la data short (esempio 12/02/2014)
+            </summary>
+            <param name="DateValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToInteger(System.String)">
+            <summary>
+            Converte la stringa passata in un valore int.
+            Se la stringa contiene un valore non compatibile allora restituisce 0 (zero).
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableInteger(System.String)">
+            <summary>
+            Converte la stringa passata in un valore int.
+            Se la stringa contiene un valore non compatibile allora restituisce 0 (zero) oppure se la stringa è vuota null.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToInteger(System.Nullable{System.Int32})">
+            <summary>
+            Converte l'int nullabile passato in un valore int.
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToInteger(System.Object)">
+            <summary>
+            Converte l'oggetto passato in un valore int.
+            Se l'oggetto contiene un valore non compatibile allora restituisce 0 (zero).
+            </summary>
+            <param name="integerObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableByte(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo byte nullabile
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToByte(System.Nullable{System.Byte})">
+            <summary>
+            Trasforma la il byte nullabile in un numero di tipo byte
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableShort(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo Short nullabile
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToShort(System.Nullable{System.Int16})">
+            <summary>
+            Trasforma la il short nullabile in un numero di tipo short
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableDecimal(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo Decimal nullabile
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToDecimal(System.Nullable{System.Decimal})">
+            <summary>
+            Trasforma la il decimal nullabile in un numero di tipo Decimal
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNullableDouble(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo Double nullabile
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToDouble(System.String)">
+            <summary>
+            Trasforma la stringa in un numero di tipo Double
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToDouble(System.Nullable{System.Double})">
+            <summary>
+            Trasforma la il double nullabile in un numero di tipo double
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToSingle(System.Nullable{System.Single})">
+            <summary>
+            Converte l'float nullabile passato in un valore float.
+            </summary>
+            <param name="nullableValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToSingle(System.String)">
+            <summary>
+            Trasforma la stringa in un valore float
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToBoolean(System.String)">
+            <summary>
+            Converte la stringa passata in un valore bool.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToNumber(System.Boolean)">
+            <summary>
+            Restituisce un valore intero relativo al valore booleano (0=False, 1=True)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrency(System.Decimal)">
+            <summary>
+            Trasforma un decimal in una stringa con formato Currency
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrency(System.Nullable{System.Decimal})">
+            <summary>
+            Trasforma un decimal nullabile in una stringa con formato Currency
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrency(System.Double)">
+            <summary>
+            Trasforma un decimal in una stringa con formato Currency
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrency(System.Nullable{System.Double})">
+            <summary>
+            Trasforma un decimal nullabile in una stringa con formato Currency
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrencyNumber(System.Decimal)">
+            <summary>
+            Trasforma un decimal in una stringa con formato Currency Number
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.ToCurrencyNumber(System.Nullable{System.Decimal})">
+            <summary>
+            Trasforma un decimal nullabile in una stringa con formato Currency Number
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.GetDescription(System.Enum)">
+            <summary>
+            Recupera il valore dell'attributo description dalla voce dell'enumeratore, ritorna null in caso di exception
+            </summary>
+            <param name="enumVoice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.GetDescription(System.Enum,System.Boolean)">
+            <summary>
+            Recupera il valore dell'attributo description dalla voce dell'enumeratore, ritorna null in caso di exception
+            </summary>
+            <param name="enumVoice"></param>
+            <param name="manageException">True per gestire le eccezioni, di default è false</param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.IsNullableType(System.Type)">
+            <summary>
+            Controlla se il parametro passato è di tipo nullable
+            </summary>
+            <param name="theType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExtensionMethods.Istanziato(System.Delegate)">
+            <summary>
+            Verifica se il delegate è stato ustanziato
+            </summary>
+            <param name="evento"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ExceptionHelper.GetCompleteErrorMessage(System.Exception,System.String)">
+            <summary>
+            Restituisce il testo del messaggio passato completo dei messaggi degli eventuali errori interni.
+            I messaggi vengono separato fra di loro tramite la stringa passata come Separatore
+            </summary>
+            <param name="ex">Exception della quale restituire i messaggi d'errore</param>
+            <param name="separator">Separatore dei messaggi d'errore</param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetWebConfigGlobalizationSection">
+            <summary>
+            Restituisce la sezione globalization nella sezione system.web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetWebConfigGlobalizationCulture">
+            <summary>
+            Recupera il valore culture dal web.config
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetWebConfigGlobalizationUICulture">
+            <summary>
+            Recupera il valore uiCulture dal web.config
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetCurrentCulture">
+            <summary>
+            Recupera la culture del server
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetCurrentUICulture">
+            <summary>
+            Recupera la uiCulture del server
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetCulture">
+            <summary>
+            Restituisce la culture local se il tag globalization non è presente nel web.config 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Globalization.GetUICulture">
+            <summary>
+            Restituisce la uiCulture local se il tag globalization non è presente nel web.config 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.GuidUtility.NewGuid(System.String)">
+            <summary>
+            Restituisce un System.Guid creato in base alla stringa passata. Se la stringa passata è in un formato non compatibile restituisce un Guid.Empty
+            </summary>
+            <param name="guidString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.GuidUtility.GetValidGuid(System.Object)">
+            <summary>
+            Controlla la validità dell'oggetto passato e ne restituisce lesatta forma guid. Nel caso non fosse del tipo giusto viene restituito un Guid.Empty
+            </summary>
+            <param name="guid"></param>
+            <param name="Item"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SeCoGes.Utilities.ImageUtility.ResizeImage(System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Effettua il resize di un immagine e la salva al percorso indicato
+            </summary>
+            <param name="OriginalFile"></param>
+            <param name="NewFile"></param>
+            <param name="NewWidth"></param>
+            <param name="MaxHeight"></param>
+            <param name="OnlyResizeIfWider"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.PasswordHelper.GetHashPasswordForStoringInConfigFile(System.String)">
+            <summary>
+            Effettua la criptazione della stringa passata come parametro utilizzando il metodo HashPasswordForStoringInConfigFile della classe System.Web.Security.FormsAuthentication
+            </summary>
+            <param name="passwordInChiaro"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.PasswordHelper.CriptaPasswordInMD5(System.String)">
+            <summary>
+            Effettua la criptazione della stringa passata come parametro utilizzando la classe MD5
+            </summary>
+            <param name="passwordInChiaro"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.PasswordHelper.CriptaPasswordInMD5(System.String,System.Boolean)">
+            <summary>
+            Effettua la criptazione della stringa passata come parametro utilizzando la classe MD5
+            </summary>
+            <param name="passwordInChiaro"></param>
+            <param name="upperCaseResult">True per avere la password criptata in UpperCase</param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.PasswordHelper.ComparaPasswordInMD5(System.String,System.String)">
+            <summary>
+            Effattua la comparazione tra una stringa non criptata ed una criptata in MD5
+            </summary>
+            <param name="passwordInChiaro"></param>
+            <param name="passwordCriptataInMD5"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.Windows.OpenExplorerWindow">
+            <summary>
+            Effettua l'apertura della finestra explorer di windows
+            </summary>
+            <param name="fullFilePath"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.Windows.OpenExplorerWindow(System.String)">
+            <summary>
+            Effettua l'apertura del percorso passato nella finestra explorer di windows
+            </summary>
+            <param name="fullFilePath"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.Windows.OpenExplorerWindow(System.String,System.Boolean)">
+            <summary>
+            Effettua l'apertura del percorso passato nella finestra explorer di windows
+            </summary>
+            <param name="fullFilePath"></param>
+            <param name="selectedFile">true per evidenziare il percorso nella cartella</param>
+        </member>
+        <member name="T:SeCoGes.Utilities.CodiceFiscaleClient">
+            <summary>
+            Non richiede nessuna libreria
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.CollectionConverter`1.ConvertiIEnumerableToObserableColletion(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Le ObservableCollection richiedono il reference WindowsBase per essere utilizzate col framework 3.5
+            </summary>
+            <param name="myIEnumerable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.ElencoErroriValidazione.ToString">
+            <summary>
+            Restituisce una unica stringa contenente tutte le righe di testo aggiunte in precedenze separate dal carattere/testo indicato nella property RowSeparator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SeCoGes.Utilities.ElencoErroriValidazione.RowSeparator">
+            <summary>
+            Imposta o restituisce il carattere/testo di separazione fra le righe aggiunte a questa istanza di ElencoErroriValidazione
+            </summary>
+        </member>
+        <member name="P:SeCoGes.Utilities.ElencoErroriValidazione.HasData">
+            <summary>
+            Restituisce un valore booleano che indica se in questa istanza sono state aggiunte stringhe
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.EmailManager.InviaMail(System.String,System.String,System.String,System.String,SeCoGes.Utilities.TipologiaEmailEnum)">
+            <summary>
+            Effettua l'inivio di una mail
+            </summary>
+            <param name="indirizzoMailDestinatario"></param>
+            <param name="oggettoMail"></param>
+            <param name="corpoMail"></param>
+            <param name="tipologiaEmail"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.EmailManager.InviaMail(System.Collections.Generic.IList{System.String},System.String,System.String,System.String,SeCoGes.Utilities.TipologiaEmailEnum)">
+            <summary>
+            Effettua l'invio di tante mail quanti sono i destinatari passati nel parametro indirizziMailDestinatari
+            </summary>
+            <param name="indirizziMailDestinatari">distinatari a cui inviare l'email</param>
+            <param name="oggettoMail"></param>
+            <param name="corpoMail"></param>
+            <param name="tipologiaEmail"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.EmailManager.SendMail(System.String,System.String,System.String,System.String,SeCoGes.Utilities.TipologiaEmailEnum)">
+            <summary>
+            Metodo che effettua l'invio dell'email al destinatario passato come parametro
+            </summary>
+            <param name="indirizzoMailDestinatario"></param>
+            <param name="oggettoMail"></param>
+            <param name="corpoMail"></param>
+            <param name="tipologiaEmail"></param>
+        </member>
+        <member name="M:SeCoGes.Utilities.EmailManager.SendCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
+            <summary>
+            Indica che l'invio dell'email è stato completato
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.EmailManager.SendMailCompleted(System.Boolean)">
+            <summary>
+            Indica che l'invio dell'email è stato completato
+            </summary>
+        </member>
+        <member name="E:SeCoGes.Utilities.EmailManager.OnSendMailCompleted">
+            <summary>
+            Indica lo stato dell'invio email
+            </summary>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDictionaryEnumeratore``2(System.Func{``0,System.String})">
+            <summary>
+            Permette di ottenere tutte le descrizioni di un'enumeratore
+            </summary>
+            <typeparam name="T">Tipo della voce dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            <param name="funzioneGetDescrizione">Funzione che recupera la descrizione dell'enumeratore</param>
+            <returns>Dictionary corrispondente a tutti i valori e le rispettive descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDictionaryEnumeratore``2(System.Func{``0,System.String},System.Boolean)">
+            <summary>
+            Permette di ottenere tutte le descrizioni di un'enumeratore
+            </summary>
+            <typeparam name="T">Tipo della voce dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            <param name="funzioneGetDescrizione">Funzione che recupera la descrizione dell'enumeratore</param>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns>Dictionary corrispondente a tutti i valori e le rispettive descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDictionaryEnumeratore``1(System.Func{``0,System.String})">
+            <summary>
+            Permette di ottenere tutte le descrizioni di un'enumeratore
+            </summary>
+            <typeparam name="T">Tipo della voce dell'enumeratore</typeparam>
+            <param name="funzioneGetDescrizione">Funzione che recupera la descrizione dell'enumeratore</param>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDictionaryEnumeratore``1(System.Func{``0,System.String},System.Boolean)">
+            <summary>
+            Permette di ottenere tutte le descrizioni di un'enumeratore
+            </summary>
+            <typeparam name="T">Tipo della voce dell'enumeratore</typeparam>
+            <param name="funzioneGetDescrizione">Funzione che recupera la descrizione dell'enumeratore</param>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValoriEnumeratore``2">
+            <summary>
+            Recupera tutte i valori presenti dal Type dell'enumeratore passato come parametro
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            <returns>Ritorna un Dictionary contenente il valore della voce dell'enumeratore e il nome della voce dell'enumeratore</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValoriEnumeratore``2(System.Boolean)">
+            <summary>
+            Recupera tutte i valori presenti dal Type dell'enumeratore passato come parametro
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns>Ritorna un Dictionary contenente il valore della voce dell'enumeratore e il nome della voce dell'enumeratore</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValoriEnumeratore``1">
+            <summary>
+            Recupera tutte i valori presenti dal Type dell'enumeratore passato come parametro
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValoriEnumeratore``1(System.Boolean)">
+            <summary>
+            Recupera tutte i valori presenti dal Type dell'enumeratore passato come parametro
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDescriptionFromEnum``2">
+            <summary>
+            Recupera il valore dell'attributo Description dalle voci degli enumeratori
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            </summary>
+            Ritorna un Dictionary contenente il valore della voce dell'enumeratore e il nome della voce dell'enumeratore
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDescriptionFromEnum``2(System.Boolean)">
+            <summary>
+            Recupera il valore dell'attributo Description dalle voci degli enumeratori
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <typeparam name="T1">Tipo della voce da inserire nel dictionary</typeparam>
+            <param name="manageException">True per gestire le eventuali eccezioni</param>
+            </summary>
+            <returns>Ritorna un Dictionary contenente il valore della voce dell'enumeratore e il nome della voce dell'enumeratore</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDescriptionFromEnum``1">
+            <summary>
+            Recupera il valore dell'attributo Description dalle voci degli enumeratori
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetDescriptionFromEnum``1(System.Boolean)">
+            <summary>
+            Recupera il valore dell'attributo Description dalle voci degli enumeratori
+            </summary>
+            <typeparam name="T">Tipo dell'enumeratore</typeparam>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns>Lista contenente tutte le descrizioni di un'enumeratore del tipo impostato</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValueFromDescription``1(System.String)">
+            <summary>
+            Restituisce il valore dell'enumeratore indicato da T relativo al valore dell'attributo Description passato
+            </summary>
+            <typeparam name="T">Tipo dell'enu</typeparam>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.EnumHelper.GetValueFromDescription``1(System.String,System.Boolean)">
+            <summary>
+            Restituisce il valore dell'enumeratore indicato da T relativo al valore dell'attributo Description passato
+            </summary>
+            <typeparam name="T">Tipo dell'enu</typeparam>
+            <param name="description"></param>
+            <param name="manageException">True per gestire le eventuali eccezioni generate</param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.GestioneFile.SpostaSingoloFile(System.IO.FileInfo,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pathFileOrigine"></param>
+            <param name="pathFileDestinazione"></param>
+            <returns>File di destinazione</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.GestioneFile.CopiaSingoloFile(System.IO.FileInfo,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pathFileOrigine"></param>
+            <param name="pathFileDestinazione"></param>
+            <returns>File di destinazione</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.StringUtility.GetIniziali(System.String,System.String[])">
+            <summary>
+            Restituisce le iniziali delle due stringhe in base alla formattazione passata, la formattazione di default è "{0} "
+            </summary>
+            <param name="formattazioneIniziale">Formattazione da applicare all'iniziale (Es. "{0}.")</param>
+            <param name="stringhe"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.StringUtility.GetFirstNotEmptyString(System.String[])">
+            <summary>
+            Verifica tutte le stringhe passate come parametro, la prima che non è una stringa vuota viene restituita
+            </summary>
+            <param name="stringhe"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.UtilityMethods.ComparaArrayDiByte(System.Byte[],System.Byte[])">
+            <summary>
+            Confronta 2 array di byte.
+            </summary>
+            <param name="array1"></param>
+            <param name="array2"></param>
+            <returns>Ritorna 'True' se sono uguali.</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.UtilityMethods.GetUtenteCorrente">
+            <summary>
+            Ottiene il nome dell'utente loggato
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:SeCoGes.Utilities.UtilityMethods.GetStringBuilderFromList(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Restituisce un oggetto StringBuilder contenente le stringhe presenti nella lista passata. Dopo ogni stringa viene inserito un ritorno a capo.
+            </summary>
+            <param name="stringList"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

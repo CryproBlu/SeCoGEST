@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GestGRPSCG" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.12;Initial Catalog=GestGRPSCG;Persist Security Info=True;User ID=Gestionale;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="SeCoGEST.Entities.Properties.Settings" SettingsPropertyName="GestGRPSCGConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="SeCoGEST.Allegato" Member="Allegatoes">
+    <Type Name="Allegato">
+      <Column Name="ID" Storage="_Id" Type="System.Guid" DbType="uniqueidentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDLegame" Type="System.Guid" DbType="uniqueidentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipologiaAllegato" Storage="_IDTipologiaAllegato" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NomeFile" Type="System.String" DbType="nvarchar(255) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UserName" Type="System.String" DbType="nvarchar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataArchiviazione" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Compresso" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FileAllegato" Type="System.Data.Linq.Binary" DbType="varbinary(max) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="varchar(max)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Operatore" Member="Operatores">
+    <Type Name="Operatore">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cognome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CognomeNome" Type="System.String" DbType="NVarChar(101) NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Area" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Attivo" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="EmailResponsabile" Type="System.String" DbType="nvarchar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Operatore_Intervento_Operatore" Member="Intervento_Operatores" ThisKey="ID" OtherKey="IDOperatore" Type="Intervento_Operatore" />
+      <Association Name="Operatore_AccountOperatore" Member="AccountOperatores" ThisKey="ID" OtherKey="IDOperatore" Type="AccountOperatore" />
+      <Association Name="Operatore_ConfigurazioneTipologiaTicketCliente" Member="ConfigurazioneTipologiaTicketCliente" ThisKey="ID" OtherKey="IdOperatore" Type="ConfigurazioneTipologiaTicketCliente" />
+      <Association Name="Operatore_Progetto" Member="Progetto" ThisKey="ID" OtherKey="IDDPO" Type="Progetto" />
+      <Association Name="Operatore_Progetto1" Member="Progetto1" ThisKey="ID" OtherKey="IDReferenteCliente" Type="Progetto" />
+      <Association Name="Operatore_Progetto_Attivita" Member="Progetto_Attivita" ThisKey="ID" OtherKey="IDOperatoreAssegnato" Type="Progetto_Attivita" />
+      <Association Name="Operatore_Progetto_Attivita1" Member="Progetto_Attivita1" ThisKey="ID" OtherKey="IDOperatoreEsecutore" Type="Progetto_Attivita" />
+      <Association Name="Operatore_Progetto_Operatore" Member="Progetto_Operatore" ThisKey="ID" OtherKey="IDOperatore" Type="Progetto_Operatore" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento" Member="Interventos">
+    <Type Name="Intervento">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataRedazione" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataPrevistaIntervento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RagioneSociale" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Indirizzo" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Localita" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Provincia" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Oggetto" Type="System.String" DbType="nvarchar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RichiesteProblematicheRiscontrate" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Definizione" Type="System.String" DbType="nvarchar(1000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NumeroCommessa" Type="System.String" DbType="nvarchar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdTipologia" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiamata" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReferenteChiamata" Type="System.String" DbType="nvarchar(200)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Urgente" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Interno" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VisibileAlCliente" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Stato" Type="System.Byte" DbType="tinyint" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdDestinazione" Type="System.String" DbType="varchar(7)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DestinazioneMerce" Type="System.String" DbType="varchar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DescrizioneStato" Type="System.String" DbType="varchar(20)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiuso" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleMinuti" Type="System.Int32" DbType="Int" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="IDAccountUtenteRiferimento" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDInterventoSostitutivo" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MotivazioneSostituzione" Type="System.String" DbType="nvarchar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDConfigurazioneTipologiaTicket" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataNotifica" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TestoNotifica" Type="System.String" DbType="nvarchar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Notificata" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento" Member="InterventoOriginale" Storage="_InterventoSostitutivo" ThisKey="ID" OtherKey="IDInterventoSostitutivo" Type="Intervento" Cardinality="One" />
+      <Association Name="Intervento_Intervento_Articolo" Member="Intervento_Articolos" ThisKey="ID" OtherKey="IDIntervento" Type="Intervento_Articolo" />
+      <Association Name="Intervento_Intervento_Operatore" Member="Intervento_Operatores" ThisKey="ID" OtherKey="IDIntervento" Type="Intervento_Operatore" />
+      <Association Name="Intervento_Intervento_Stato" Member="Intervento_Statos" ThisKey="ID" OtherKey="IDIntervento" Type="Intervento_Stato" />
+      <Association Name="Intervento_Intervento_Discussione" Member="Intervento_Discussiones" ThisKey="ID" OtherKey="IDIntervento" Type="Intervento_Discussione" />
+      <Association Name="Intervento_Intervento_CaratteristicaTipologiaIntervento" Member="Intervento_CaratteristicaTipologiaInterventos" ThisKey="ID" OtherKey="IdIntervento" Type="Intervento_CaratteristicaTipologiaIntervento" />
+      <Association Name="Intervento_Intervento_ConfigurazioneTipologiaTicketCliente" Member="Intervento_ConfigurazioneTipologiaTicketCliente" ThisKey="ID" OtherKey="Id" Type="Intervento_ConfigurazioneTipologiaTicketCliente" Cardinality="One" />
+      <Association Name="Intervento_Intervento_OrarioRepartoUfficio" Member="Intervento_OrarioRepartoUfficios" ThisKey="ID" OtherKey="IdIntervento" Type="Intervento_OrarioRepartoUfficio" />
+      <Association Name="Intervento_Progetto_Attivita" Member="Progetto_Attivita" ThisKey="ID" OtherKey="IDTicket" Type="Progetto_Attivita" />
+      <Association Name="Intervento_Progetto_Attivita1" Member="Progetto_Attivita1" ThisKey="ID" OtherKey="IDTicket" Type="Progetto_Attivita" />
+      <Association Name="Account_Intervento" Member="AccountRiferimento" ThisKey="IDAccountUtenteRiferimento" OtherKey="ID" Type="Account" IsForeignKey="true" />
+      <Association Name="Intervento_Intervento" Member="InterventoSostitutivo" Storage="_InterventoOriginale" ThisKey="IDInterventoSostitutivo" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+      <Association Name="ConfigurazioneTipologiaTicketCliente_Intervento" Member="ConfigurazioneTipologiaTicketCliente" ThisKey="IDConfigurazioneTipologiaTicket" OtherKey="Id" Type="ConfigurazioneTipologiaTicketCliente" IsForeignKey="true" />
+      <Association Name="AnagraficaClienti_Intervento" Member="AnagraficaClienti" ThisKey="CodiceCliente" OtherKey="CODCONTO" Type="AnagraficaClienti" IsForeignKey="true" />
+      <Association Name="TipologiaIntervento_Intervento" Member="TipologiaIntervento" ThisKey="IdTipologia" OtherKey="Id" Type="TipologiaIntervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_Articolo" Member="Intervento_Articolos">
+    <Type Name="Intervento_Articolo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipologiaArticolo" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Decimal" DbType="decimal" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="varchar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="varchar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="varchar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="varchar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OreTime" Type="System.String" DbType="nvarchar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ore" Type="System.Decimal" DbType="decimal(20,8)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DaFatturare" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Quantita" Type="System.Int32" DbType="int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_Articolo" Member="Intervento" ThisKey="IDIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ScadenzaPassword" Type="System.DateTime" DbType="Date" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Nominativo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Amministratore" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SolaLettura" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Bloccato" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UltimoAccesso" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="varchar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RagioneSociale" Type="System.String" DbType="varchar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdDestinazione" Type="System.String" DbType="varchar(7)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DestinazioneMerce" Type="System.String" DbType="varchar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tipologia" Storage="_IsCliente" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ValidatoreOfferta" Storage="_Validatore" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Account_Intervento" Member="Interventos" ThisKey="ID" OtherKey="IDAccountUtenteRiferimento" Type="Intervento" />
+      <Association Name="Account_AccountOperatore" Member="AccountOperatores" ThisKey="ID" OtherKey="IDAccount" Type="AccountOperatore" />
+      <Association Name="Account_Intervento_Discussione" Member="Intervento_Discussione" ThisKey="ID" OtherKey="IDAccount" Type="Intervento_Discussione" />
+      <Association Name="Account_OffertaAccountValidatore" Member="OffertaAccountValidatores" ThisKey="ID" OtherKey="IDAccount" Type="OffertaAccountValidatore" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_Operatore" Member="Intervento_Operatores">
+    <Type Name="Intervento_Operatore">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDOperatore" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDModalitaRisoluzione" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InizioIntervento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FineIntervento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DurataMinuti" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PausaMinuti" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleMinuti" Type="System.Int32" DbType="Int" IsReadOnly="true" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="PresaInCarico" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataPresaInCarico" Type="System.DateTime" DbType="datetime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_Operatore" Member="Intervento" ThisKey="IDIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Operatore_Intervento_Operatore" Member="Operatore" ThisKey="IDOperatore" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+      <Association Name="ModalitaRisoluzioneIntervento_Intervento_Operatore" Member="ModalitaRisoluzioneIntervento" ThisKey="IDModalitaRisoluzione" OtherKey="ID" Type="ModalitaRisoluzioneIntervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ModalitaRisoluzioneIntervento" Member="ModalitaRisoluzioneInterventos">
+    <Type Name="ModalitaRisoluzioneIntervento">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="ModalitaRisoluzioneIntervento_Intervento_Operatore" Member="Intervento_Operatores" ThisKey="ID" OtherKey="IDModalitaRisoluzione" Type="Intervento_Operatore" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ElencoCompletoArticoli" Member="ElencoCompletoArticolis">
+    <Type Name="ElencoCompletoArticoli" Id="ID2">
+      <Column Name="TipologiaArticolo" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneTipologia" Type="System.String" DbType="varchar(30) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Decimal" DbType="decimal" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="varchar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DescrizioneContratto" Type="System.String" DbType="varchar(3000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="varchar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="varchar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="varchar(3000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OreFatte" Type="System.Decimal" DbType="decimal(19,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OreIncluse" Type="System.Decimal" DbType="decimal(19,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OreDaFare" Type="System.Decimal" DbType="decimal(19,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ID" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="varchar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataAttivazione" Type="System.DateTime" DbType="DateTime" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataChiusura" Type="System.DateTime" DbType="DateTime" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_Stato" Member="Intervento_Statos">
+    <Type Name="Intervento_Stato">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Stato" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneStato" Type="System.String" DbType="VarChar(8)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NomeUtente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_Stato" Member="Intervento" ThisKey="IDIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="InformazioniContrattos">
+    <Type Name="InformazioniContratto" Id="ID1">
+      <Column Name="TipologiaArticolo" Type="System.Int32" DbType="int" IsReadOnly="true" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="varchar(50)" IsReadOnly="true" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DescrizioneContratto" Type="System.String" DbType="varchar(3000)" IsReadOnly="true" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.VocePredefinitaIntervento" Member="VocePredefinitaInterventos">
+    <Type Name="VocePredefinitaIntervento">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SottoCategoria" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Abstract" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrdineCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrdineSottoCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DESTINAZIONIDIVERSE" Member="DESTINAZIONIDIVERSEs">
+    <Type Name="DESTINAZIONIDIVERSE">
+      <Column Name="CODCONTO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODICE" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RAGIONESOCIALE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="INDIRIZZO" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="LOCALITA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="PROVINCIA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="TELEFONO" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="FAX" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ARTICOLIUNITAMISURA" Member="ARTICOLIUNITAMISURAs">
+    <Type Name="ARTICOLIUNITAMISURA">
+      <Column Name="CODART" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UM" Type="System.String" DbType="VarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AccountOperatore" Member="AccountOperatores">
+    <Type Name="AccountOperatore">
+      <Column Name="IDAccount" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDOperatore" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InviaNotifiche" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Account_AccountOperatore" Member="Account" ThisKey="IDAccount" OtherKey="ID" Type="Account" IsForeignKey="true" />
+      <Association Name="Operatore_AccountOperatore" Member="Operatore" ThisKey="IDOperatore" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.LogInvioNotifica" Member="LogInvioNotificas">
+    <Type Name="LogInvioNotifica">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLegame" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDTabellaLegame" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDNotifica" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Esito" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Notifica_LogInvioNotifica" Member="Notifica" ThisKey="IDNotifica" OtherKey="ID" Type="Notifica" IsForeignKey="true" />
+      <Association Name="InfoOperazioneRecord_Tabella_LogInvioNotifica" Member="InfoOperazioneRecord_Tabella" ThisKey="IDTabellaLegame" OtherKey="ID" Type="InfoOperazioneRecord_Tabella" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Notifica" Member="Notificas">
+    <Type Name="Notifica">
+      <Column Name="ID" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Notifica_LogInvioNotifica" Member="LogInvioNotificas" ThisKey="ID" OtherKey="IDNotifica" Type="LogInvioNotifica" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.InfoOperazioneRecord" Member="InfoOperazioneRecords">
+    <Type Name="InfoOperazioneRecord">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLegame" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDTabellaLegame" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipoOperazione" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataOperazione" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneModifica" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="InfoOperazioneRecord_Tabella_InfoOperazioneRecord" Member="InfoOperazioneRecord_Tabella" ThisKey="IDTabellaLegame" OtherKey="ID" Type="InfoOperazioneRecord_Tabella" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.InfoOperazioneRecord_Tabella" Member="InfoOperazioneRecord_Tabellas">
+    <Type Name="InfoOperazioneRecord_Tabella">
+      <Column Name="ID" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NomeTabella" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="InfoOperazioneRecord_Tabella_LogInvioNotifica" Member="LogInvioNotificas" ThisKey="ID" OtherKey="IDTabellaLegame" Type="LogInvioNotifica" />
+      <Association Name="InfoOperazioneRecord_Tabella_InfoOperazioneRecord" Member="InfoOperazioneRecords" ThisKey="ID" OtherKey="IDTabellaLegame" Type="InfoOperazioneRecord" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiVenditaRata" Member="AnalisiVenditaRatas">
+    <Type Name="AnalisiVenditaRata">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnalisiVendita" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImportoProposto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImportoDefinito" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiVendita_AnalisiVenditaRata" Member="AnalisiVendita" ThisKey="IDAnalisiVendita" OtherKey="ID" Type="AnalisiVendita" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiCostoRaggruppamento" Member="AnalisiCostoRaggruppamentos">
+    <Type Name="AnalisiCostoRaggruppamento">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnalisiCosto" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDRaggruppamentoPadre" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="int  NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Denominazione" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaCalcolato" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiCostoRaggruppamento" Member="AnalisiCostoRaggruppamentos" ThisKey="ID" OtherKey="IDRaggruppamentoPadre" Type="AnalisiCostoRaggruppamento" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiCostoArticolo" Member="AnalisiCostoArticolos" ThisKey="ID" OtherKey="IDRaggruppamento" Type="AnalisiCostoArticolo" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiVendita" Member="AnalisiVenditas" ThisKey="ID" OtherKey="IDRaggruppamento" Type="AnalisiVendita" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiCostoRaggruppamento" Member="AnalisiCostoRaggruppamento1" ThisKey="IDRaggruppamentoPadre" OtherKey="ID" Type="AnalisiCostoRaggruppamento" IsForeignKey="true" />
+      <Association Name="AnalisiCosto_AnalisiCostoRaggruppamento" Member="AnalisiCosto" ThisKey="IDAnalisiCosto" OtherKey="ID" Type="AnalisiCosto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiCostoArticolo" Member="AnalisiCostoArticolos">
+    <Type Name="AnalisiCostoArticolo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDRaggruppamento" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDAnalisiVendita" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="int  NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceGruppo" Storage="_Gruppo" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoria" Storage="_Categoria" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoriaStatistica" Storage="_CategoriaStatistica" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UnitaMisura" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Vendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Quantita" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ContieneCampiAggiuntivi" Type="System.Boolean" DbType="Bit" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiCostoArticolo_AnalisiCostoArticoloCampoAggiuntivo" Member="AnalisiCostoArticoloCampoAggiuntivos" ThisKey="ID" OtherKey="IDAnalisiCostoArticolo" Type="AnalisiCostoArticoloCampoAggiuntivo" />
+      <Association Name="AnalisiCostoArticolo_AnalisiVendita" Member="AnalisiVenditas" ThisKey="ID" OtherKey="IDArticolo" Type="AnalisiVendita" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiCostoArticolo" Member="AnalisiCostoRaggruppamento" ThisKey="IDRaggruppamento" OtherKey="ID" Type="AnalisiCostoRaggruppamento" IsForeignKey="true" />
+      <Association Name="AnalisiVendita_AnalisiCostoArticolo" Member="AnalisiVendita" ThisKey="IDAnalisiVendita" OtherKey="ID" Type="AnalisiVendita" IsForeignKey="true" />
+      <Association Name="TABGRUPPI_AnalisiCostoArticolo" Member="TABGRUPPI" ThisKey="CodiceGruppo" OtherKey="CODICE" Type="TABGRUPPI" IsForeignKey="true" />
+      <Association Name="TABCATEGORIE_AnalisiCostoArticolo" Member="TABCATEGORIE" ThisKey="CodiceCategoria" OtherKey="CODICE" Type="TABCATEGORIE" IsForeignKey="true" />
+      <Association Name="TABCATEGORIESTAT_AnalisiCostoArticolo" Member="TABCATEGORIESTAT" ThisKey="CodiceCategoriaStatistica" OtherKey="CODICE" Type="TABCATEGORIESTAT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiCostoArchivioCampoAggiuntivo" Member="AnalisiCostoArchivioCampoAggiuntivos">
+    <Type Name="AnalisiCostoArchivioCampoAggiuntivo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ordine" Type="System.Int32" DbType="int  NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceGruppo" Storage="_Gruppo" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoria" Storage="_Categoria" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoriaStatistica" Storage="_CategoriaStatistica" Type="System.Decimal" DbType="decimal(5, 0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NomeCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipoCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valore" Storage="_ValorePredefinito" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FonteEsternaValori" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiCostoArticoloCampoAggiuntivo" Member="AnalisiCostoArticoloCampoAggiuntivos">
+    <Type Name="AnalisiCostoArticoloCampoAggiuntivo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnalisiCostoArticolo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="int  NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NomeCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipoCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valore" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FonteEsternaValori" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiCostoArticolo_AnalisiCostoArticoloCampoAggiuntivo" Member="AnalisiCostoArticolo" ThisKey="IDAnalisiCostoArticolo" OtherKey="ID" Type="AnalisiCostoArticolo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiCosto" Member="AnalisiCostos">
+    <Type Name="AnalisiCosto">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NumeroRevisione" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Titolo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaCalcolato" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiuso" Type="System.Boolean" DbType="bit" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiCosto_AnalisiCostoRaggruppamento" Member="AnalisiCostoRaggruppamentos" ThisKey="ID" OtherKey="IDAnalisiCosto" Type="AnalisiCostoRaggruppamento" />
+      <Association Name="AnalisiCosto_AnalisiVendita" Member="AnalisiVenditas" ThisKey="ID" OtherKey="IDAnalisiCosto" Type="AnalisiVendita" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiVendita" Member="AnalisiVenditas">
+    <Type Name="AnalisiVendita">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnalisiCosto" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDRaggruppamento" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDArticolo" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Tipologia" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiVendita_AnalisiVenditaRata" Member="AnalisiVenditaRatas" ThisKey="ID" OtherKey="IDAnalisiVendita" Type="AnalisiVenditaRata" />
+      <Association Name="AnalisiVendita_AnalisiCostoArticolo" Member="AnalisiCostoArticolos" ThisKey="ID" OtherKey="IDAnalisiVendita" Type="AnalisiCostoArticolo" />
+      <Association Name="AnalisiCosto_AnalisiVendita" Member="AnalisiCosto" ThisKey="IDAnalisiCosto" OtherKey="ID" Type="AnalisiCosto" IsForeignKey="true" />
+      <Association Name="AnalisiCostoArticolo_AnalisiVendita" Member="AnalisiCostoArticolo" ThisKey="IDArticolo" OtherKey="ID" Type="AnalisiCostoArticolo" IsForeignKey="true" />
+      <Association Name="AnalisiCostoRaggruppamento_AnalisiVendita" Member="AnalisiCostoRaggruppamento" ThisKey="IDRaggruppamento" OtherKey="ID" Type="AnalisiCostoRaggruppamento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TABGRUPPI" Member="TABGRUPPIs">
+    <Type Name="TABGRUPPI">
+      <Column Name="CODICE" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIZIONE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="MAGFISCALE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TABGRUPPI_AnalisiCostoArticolo" Member="AnalisiCostoArticolos" ThisKey="CODICE" OtherKey="CodiceGruppo" Type="AnalisiCostoArticolo" />
+      <Association Name="TABGRUPPI_OffertaArticolo" Member="OffertaArticolos" ThisKey="CODICE" OtherKey="CodiceGruppo" Type="OffertaArticolo" />
+      <Association Name="TABGRUPPI_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos" ThisKey="CODICE" OtherKey="CodiceGruppoIn" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="TABGRUPPI_ANAGRAFICAARTICOLI" Member="ANAGRAFICAARTICOLIs" ThisKey="CODICE" OtherKey="GRUPPO" Type="ANAGRAFICAARTICOLI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TABCATEGORIE" Member="TABCATEGORIEs">
+    <Type Name="TABCATEGORIE">
+      <Column Name="CODICE" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIZIONE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Budget" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+      <Association Name="TABCATEGORIE_AnalisiCostoArticolo" Member="AnalisiCostoArticolos" ThisKey="CODICE" OtherKey="CodiceCategoria" Type="AnalisiCostoArticolo" />
+      <Association Name="TABCATEGORIE_OffertaArticolo" Member="OffertaArticolos" ThisKey="CODICE" OtherKey="CodiceCategoria" Type="OffertaArticolo" />
+      <Association Name="TABCATEGORIE_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos" ThisKey="CODICE" OtherKey="CodiceCategoriaIn" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="TABCATEGORIE_AnalisiVenditaConfigurazioneArticoloAggiuntivo1" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos1" ThisKey="CODICE" OtherKey="CodiceCategoriaIn" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="TABCATEGORIE_ANAGRAFICAARTICOLI" Member="ANAGRAFICAARTICOLIs" ThisKey="CODICE" OtherKey="CATEGORIA" Type="ANAGRAFICAARTICOLI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TABCATEGORIESTAT" Member="TABCATEGORIESTATs">
+    <Type Name="TABCATEGORIESTAT">
+      <Column Name="CODICE" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIZIONE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Budget" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+      <Association Name="TABCATEGORIESTAT_AnalisiCostoArticolo" Member="AnalisiCostoArticolos" ThisKey="CODICE" OtherKey="CodiceCategoriaStatistica" Type="AnalisiCostoArticolo" />
+      <Association Name="TABCATEGORIESTAT_OffertaArticolo" Member="OffertaArticolos" ThisKey="CODICE" OtherKey="CodiceCategoriaStatistica" Type="OffertaArticolo" />
+      <Association Name="TABCATEGORIESTAT_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos" ThisKey="CODICE" OtherKey="CodiceCategoriaStatisticaIn" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="TABCATEGORIESTAT_ANAGRAFICAARTICOLI" Member="ANAGRAFICAARTICOLIs" ThisKey="CODICE" OtherKey="CODCATEGORIASTAT" Type="ANAGRAFICAARTICOLI" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OffertaRaggruppamento" Member="OffertaRaggruppamentos">
+    <Type Name="OffertaRaggruppamento">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDOfferta" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDRaggruppamentoPadre" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Denominazione" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaCalcolato" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCostoCalcolato" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValutaCalcolato" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentualeCalcolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaliModificati" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OpzioneStampaOfferta" Type="System.Int32" DbType="int" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotaleSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaConSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleSpesaCacolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaConSpesaCacolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="OffertaRaggruppamento_OffertaRaggruppamento" Member="OffertaRaggruppamentos" ThisKey="ID" OtherKey="IDRaggruppamentoPadre" Type="OffertaRaggruppamento" />
+      <Association Name="OffertaRaggruppamento_OffertaArticolo" Member="OffertaArticolos" ThisKey="ID" OtherKey="IDRaggruppamento" Type="OffertaArticolo" />
+      <Association Name="Offerta_OffertaRaggruppamento" Member="Offerta" ThisKey="IDOfferta" OtherKey="ID" Type="Offerta" IsForeignKey="true" />
+      <Association Name="OffertaRaggruppamento_OffertaRaggruppamento" Member="OffertaRaggruppamentoPadre" ThisKey="IDRaggruppamentoPadre" OtherKey="ID" Type="OffertaRaggruppamento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OffertaArticolo" Member="OffertaArticolos">
+    <Type Name="OffertaArticolo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDRaggruppamento" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceGruppo" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoria" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoriaStatistica" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UnitaMisura" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Vendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Quantita" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ContieneCampiAggiuntivi" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDArticoloPadre" Type="System.Guid" DbType="uniqueidentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaConSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="OffertaArticolo_OffertaArticolo" Member="OffertaArticoloSpeses" ThisKey="ID" OtherKey="IDArticoloPadre" Type="OffertaArticolo" />
+      <Association Name="OffertaArticolo_OffertaArticoloCampoAggiuntivo" Member="OffertaArticoloCampoAggiuntivos" ThisKey="ID" OtherKey="IDOffertaArticolo" Type="OffertaArticoloCampoAggiuntivo" />
+      <Association Name="OffertaRaggruppamento_OffertaArticolo" Member="OffertaRaggruppamento" ThisKey="IDRaggruppamento" OtherKey="ID" Type="OffertaRaggruppamento" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="TABGRUPPI_OffertaArticolo" Member="TABGRUPPI" ThisKey="CodiceGruppo" OtherKey="CODICE" Type="TABGRUPPI" IsForeignKey="true" />
+      <Association Name="TABCATEGORIE_OffertaArticolo" Member="TABCATEGORIE" ThisKey="CodiceCategoria" OtherKey="CODICE" Type="TABCATEGORIE" IsForeignKey="true" />
+      <Association Name="TABCATEGORIESTAT_OffertaArticolo" Member="TABCATEGORIESTAT" ThisKey="CodiceCategoriaStatistica" OtherKey="CODICE" Type="TABCATEGORIESTAT" IsForeignKey="true" />
+      <Association Name="ANAGRAFICAARTICOLI_OffertaArticolo" Member="ANAGRAFICAARTICOLI" ThisKey="CodiceArticolo" OtherKey="CODICE" Type="ANAGRAFICAARTICOLI" IsForeignKey="true" />
+      <Association Name="OffertaArticolo_OffertaArticolo" Member="OffertaArticoloPadre" ThisKey="IDArticoloPadre" OtherKey="ID" Type="OffertaArticolo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OffertaArchivioCampoAggiuntivo" Member="OffertaArchivioCampoAggiuntivos">
+    <Type Name="OffertaArchivioCampoAggiuntivo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodiceGruppo" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoria" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCategoriaStatistica" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NomeCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipoCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valore" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FonteEsternaValori" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OffertaArticoloCampoAggiuntivo" Member="OffertaArticoloCampoAggiuntivos">
+    <Type Name="OffertaArticoloCampoAggiuntivo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDOffertaArticolo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NomeCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TipoCampo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valore" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FonteEsternaValori" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="OffertaArticolo_OffertaArticoloCampoAggiuntivo" Member="OffertaArticolo" ThisKey="IDOffertaArticolo" OtherKey="ID" Type="OffertaArticolo" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.CaratteristicaIntervento" Member="CaratteristicaInterventos">
+    <Type Name="CaratteristicaIntervento">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="CaratteristicaIntervento_CaratteristicaTipologiaIntervento" Member="CaratteristicaTipologiaInterventos" ThisKey="Id" OtherKey="IdCaratteristica" Type="CaratteristicaTipologiaIntervento" />
+      <Association Name="CaratteristicaIntervento_Intervento_CaratteristicaTipologiaIntervento" Member="Intervento_CaratteristicaTipologiaInterventos" ThisKey="Id" OtherKey="IdCaratteristica" Type="Intervento_CaratteristicaTipologiaIntervento" />
+      <Association Name="CaratteristicaIntervento_ModelloConfigurazioneCaratteristicheTicketCliente" Member="ModelloConfigurazioneCaratteristicheTicketClientes" ThisKey="Id" OtherKey="IdCaratteristica" Type="ModelloConfigurazioneCaratteristicheTicketCliente" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.CaratteristicaTipologiaIntervento" Member="CaratteristicaTipologiaInterventos">
+    <Type Name="CaratteristicaTipologiaIntervento">
+      <Column Name="IdConfigurazione" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdCaratteristica" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Parametri" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CaratteristicaIntervento_CaratteristicaTipologiaIntervento" Member="CaratteristicaIntervento" ThisKey="IdCaratteristica" OtherKey="Id" Type="CaratteristicaIntervento" IsForeignKey="true" />
+      <Association Name="ConfigurazioneTipologiaTicketCliente_CaratteristicaTipologiaIntervento" Member="ConfigurazioneTipologiaTicketCliente" ThisKey="IdConfigurazione" OtherKey="Id" Type="ConfigurazioneTipologiaTicketCliente" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnagraficaSoggetti_Proprieta" Member="AnagraficaSoggetti_Proprietas">
+    <Type Name="AnagraficaSoggetti_Proprieta">
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Proprietà" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Valore" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="AnagraficaClienti_AnagraficaSoggetti_Proprieta" Member="AnagraficaClienti" ThisKey="CodiceCliente" OtherKey="CODCONTO" Type="AnagraficaClienti" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnagraficaClienti" Member="AnagraficaClientis">
+    <Type Name="AnagraficaClienti">
+      <Column Name="TIPOCONTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODCONTO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DSCCONTO1" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DSCCONTO2" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INDIRIZZO" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LOCALITA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PROVINCIA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TELEFONO" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FAX" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TELEX" Type="System.String" DbType="VarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODFISCALE" Type="System.String" DbType="VarChar(16)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PARTITAIVA" Type="System.String" DbType="VarChar(12)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODNAZIONE" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODICEISO" Type="System.String" DbType="VarChar(3)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODLINGUA" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TIPOPROFESSIONISTA" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LUOGONASCITA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DATANASCITA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TIPODOCRTACC" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VERSPRESSO" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(1100)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="INDIRIZZOINTERNET" Type="System.String" DbType="VarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INDIRIZZORITACC" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LOCALITARITACC" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PROVINCIARITACC" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAPRITACC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PARTITAIVARITACC" Type="System.String" DbType="VarChar(12)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODFISCALERITACC" Type="System.String" DbType="VarChar(16)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ZonaSped" Type="System.String" DbType="VarChar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TipoClienteBudget" Type="System.String" DbType="VarChar(5)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ConsideraBudget" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODREGIONE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PERCORSODOCUMENTI" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FLGBLACKLIST" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FLGPERSFISICA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DATANASCITAPERSFIS" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="COMNASCITAPERSFIS" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PROVNASCITAPERSFIS" Type="System.String" DbType="VarChar(2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODSTATOESTERO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="STATOPROVCONTEA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INDIRIZZOESTERO" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="COGNOMEPERSFIS" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NOMEPERSFIS" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FLGELENCOCF" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FLGSISTRI" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CODDEST_EDI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FLGDOGANA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FLGQUALITY" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="StatoIndicatore" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CODDESTINATARIOPA" Type="System.String" DbType="VarChar(7)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAUSALEPAGAMENTOPA" Type="System.String" DbType="VarChar(2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TIPOCASSAPA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RIFAMMINISTRAZIONEPA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SESSOPERSFIS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MINUTIMAXPRESAINCARICO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="MINUTIMAXCHIUSURA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="STATOALTRO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NOTE1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnagraficaClienti_Intervento" Member="Interventos" ThisKey="CODCONTO" OtherKey="CodiceCliente" Type="Intervento" />
+      <Association Name="AnagraficaClienti_AnagraficaSoggetti_Proprieta" Member="AnagraficaSoggetti_Proprietas" ThisKey="CODCONTO" OtherKey="CodiceCliente" Type="AnagraficaSoggetti_Proprieta" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_Discussione" Member="Intervento_Discussiones">
+    <Type Name="Intervento_Discussione">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDAccount" Storage="_IDOperatore" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataCommento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Commento" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_Discussione" Member="Intervento" ThisKey="IDIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+      <Association Name="Account_Intervento_Discussione" Member="Account" ThisKey="IDAccount" OtherKey="ID" Type="Account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.CondizioneIntervento" Member="CondizioneInterventos">
+    <Type Name="CondizioneIntervento">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="CondizioneIntervento_ConfigurazioneTipologiaTicketCliente" Member="ConfigurazioneTipologiaTicketClientes" ThisKey="Id" OtherKey="IdCondizione" Type="ConfigurazioneTipologiaTicketCliente" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ConfigurazioneTipologiaTicketCliente" Member="ConfigurazioneTipologiaTicketClientes">
+    <Type Name="ConfigurazioneTipologiaTicketCliente">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TipologiaArticolo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdTipologia" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdRepartoUfficio" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdCondizione" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ScadenzaContratto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VisibilePerCliente" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdOperatore" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ConfigurazioneTipologiaTicketCliente_Intervento" Member="Interventos" ThisKey="Id" OtherKey="IDConfigurazioneTipologiaTicket" Type="Intervento" />
+      <Association Name="ConfigurazioneTipologiaTicketCliente_CaratteristicaTipologiaIntervento" Member="CaratteristicaTipologiaInterventos" ThisKey="Id" OtherKey="IdConfigurazione" Type="CaratteristicaTipologiaIntervento" />
+      <Association Name="CondizioneIntervento_ConfigurazioneTipologiaTicketCliente" Member="CondizioneIntervento" ThisKey="IdCondizione" OtherKey="Id" Type="CondizioneIntervento" IsForeignKey="true" />
+      <Association Name="RepartoUfficio_ConfigurazioneTipologiaTicketCliente" Member="RepartoUfficio" ThisKey="IdRepartoUfficio" OtherKey="Id" Type="RepartoUfficio" IsForeignKey="true" />
+      <Association Name="TipologiaIntervento_ConfigurazioneTipologiaTicketCliente" Member="TipologiaIntervento" ThisKey="IdTipologia" OtherKey="Id" Type="TipologiaIntervento" IsForeignKey="true" />
+      <Association Name="Operatore_ConfigurazioneTipologiaTicketCliente" Member="Operatore" ThisKey="IdOperatore" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_CaratteristicaTipologiaIntervento" Member="Intervento_CaratteristicaTipologiaInterventos">
+    <Type Name="Intervento_CaratteristicaTipologiaIntervento">
+      <Column Name="IdIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdCaratteristica" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Parametri" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataLimite" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CaratteristicaIntervento_Intervento_CaratteristicaTipologiaIntervento" Member="CaratteristicaIntervento" ThisKey="IdCaratteristica" OtherKey="Id" Type="CaratteristicaIntervento" IsForeignKey="true" />
+      <Association Name="Intervento_Intervento_CaratteristicaTipologiaIntervento" Member="Intervento" ThisKey="IdIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_ConfigurazioneTipologiaTicketCliente" Member="Intervento_ConfigurazioneTipologiaTicketClientes">
+    <Type Name="Intervento_ConfigurazioneTipologiaTicketCliente">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TipologiaArticolo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Progressivo" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceArticolo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdTipologia" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdRepartoUfficio" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ScadenzaContratto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VisibilePerCliente" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_ConfigurazioneTipologiaTicketCliente" Member="Intervento" ThisKey="Id" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Intervento_OrarioRepartoUfficio" Member="Intervento_OrarioRepartoUfficios">
+    <Type Name="Intervento_OrarioRepartoUfficio">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdIntervento" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Giorno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrarioDalle" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrarioAlle" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Intervento_Intervento_OrarioRepartoUfficio" Member="Intervento" ThisKey="IdIntervento" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ModelloConfigurazioneCaratteristicheTicketCliente" Member="ModelloConfigurazioneCaratteristicheTicketClientes">
+    <Type Name="ModelloConfigurazioneCaratteristicheTicketCliente">
+      <Column Name="IdModelloConfigurazioneTicketCliente" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdCaratteristica" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Parametri" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CaratteristicaIntervento_ModelloConfigurazioneCaratteristicheTicketCliente" Member="CaratteristicaIntervento" ThisKey="IdCaratteristica" OtherKey="Id" Type="CaratteristicaIntervento" IsForeignKey="true" />
+      <Association Name="ModelloConfigurazioneTicketCliente_ModelloConfigurazioneCaratteristicheTicketCliente" Member="ModelloConfigurazioneTicketCliente" ThisKey="IdModelloConfigurazioneTicketCliente" OtherKey="Id" Type="ModelloConfigurazioneTicketCliente" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ModelloConfigurazioneTicketCliente" Member="ModelloConfigurazioneTicketClientes">
+    <Type Name="ModelloConfigurazioneTicketCliente">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="ModelloConfigurazioneTicketCliente_ModelloConfigurazioneCaratteristicheTicketCliente" Member="ModelloConfigurazioneCaratteristicheTicketClientes" ThisKey="Id" OtherKey="IdModelloConfigurazioneTicketCliente" Type="ModelloConfigurazioneCaratteristicheTicketCliente" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OrarioRepartoUfficio" Member="OrarioRepartoUfficios">
+    <Type Name="OrarioRepartoUfficio">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdRepartoUfficio" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Giorno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrarioDalle" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OrarioAlle" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="RepartoUfficio_OrarioRepartoUfficio" Member="RepartoUfficio" ThisKey="IdRepartoUfficio" OtherKey="Id" Type="RepartoUfficio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.RepartoUfficio" Member="RepartoUfficios">
+    <Type Name="RepartoUfficio">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Reparto" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="RepartoUfficio_ConfigurazioneTipologiaTicketCliente" Member="ConfigurazioneTipologiaTicketClientes" ThisKey="Id" OtherKey="IdRepartoUfficio" Type="ConfigurazioneTipologiaTicketCliente" />
+      <Association Name="RepartoUfficio_OrarioRepartoUfficio" Member="OrarioRepartoUfficios" ThisKey="Id" OtherKey="IdRepartoUfficio" Type="OrarioRepartoUfficio" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.TipologiaIntervento" Member="TipologiaInterventos">
+    <Type Name="TipologiaIntervento">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OreNotifica" Type="System.Int32" DbType="int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VersioneModelloEsportazione" Type="System.Int32" DbType="int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TipologiaIntervento_Intervento" Member="Intervento" ThisKey="Id" OtherKey="IdTipologia" Type="Intervento" />
+      <Association Name="TipologiaIntervento_ConfigurazioneTipologiaTicketCliente" Member="ConfigurazioneTipologiaTicketClientes" ThisKey="Id" OtherKey="IdTipologia" Type="ConfigurazioneTipologiaTicketCliente" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos">
+    <Type Name="AnalisiVenditaConfigurazioneArticoloAggiuntivo">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tipologia" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CodiceArticoloIn" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CodiceGruppoIn" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="CodiceCategoriaIn" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="CodiceCategoriaStatisticaIn" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="GruppoIn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoriaIn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoriaStatisticaIn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TestoAvviso" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CodiceArticoloOut" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClausoleVessatorieAggiuntive" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TestoDescrizionePreventivo" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TestoDescrizioneContratto" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UnitaMisura" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Vendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Quantita" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="AnalisiVenditaConfigurazioneArticoloAggiuntivo_AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatorias" ThisKey="ID" OtherKey="IDAnalisiVenditaConfigurazioneArticoloAggiuntivo" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" />
+      <Association Name="TABGRUPPI_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="TABGRUPPI" ThisKey="CodiceGruppoIn" OtherKey="CODICE" Type="TABGRUPPI" IsForeignKey="true" />
+      <Association Name="TABCATEGORIE_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="TABCATEGORIE" ThisKey="CodiceCategoriaIn" OtherKey="CODICE" Type="TABCATEGORIE" IsForeignKey="true" />
+      <Association Name="TABCATEGORIE_AnalisiVenditaConfigurazioneArticoloAggiuntivo1" Member="TABCATEGORIE1" ThisKey="CodiceCategoriaIn" OtherKey="CODICE" Type="TABCATEGORIE" IsForeignKey="true" />
+      <Association Name="TABCATEGORIESTAT_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="TABCATEGORIESTAT" ThisKey="CodiceCategoriaStatisticaIn" OtherKey="CODICE" Type="TABCATEGORIESTAT" IsForeignKey="true" />
+      <Association Name="ANAGRAFICAARTICOLI_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="ANAGRAFICAARTICOLIIn" ThisKey="CodiceArticoloIn" OtherKey="CODICE" Type="ANAGRAFICAARTICOLI" IsForeignKey="true" />
+      <Association Name="ANAGRAFICAARTICOLI_AnalisiVenditaConfigurazioneArticoloAggiuntivo1" Member="ANAGRAFICAARTICOLIOut" ThisKey="CodiceArticoloOut" OtherKey="CODICE" Type="ANAGRAFICAARTICOLI" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.PeriodoFestivita" Member="PeriodoFestivitas">
+    <Type Name="PeriodoFestivita">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Festivita" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Giorno" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Mese" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Anno" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ANAGRAFICAARTICOLI" Member="ANAGRAFICAARTICOLIs">
+    <Type Name="ANAGRAFICAARTICOLI">
+      <Column Name="CODICE" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIZIONE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="GRUPPO" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="CATEGORIA" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="CODCATEGORIASTAT" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="PESONETTO" Type="System.Decimal" DbType="Decimal(16,6)" CanBeNull="true" />
+      <Column Name="SUPERFICIE" Type="System.Decimal" DbType="Decimal(16,6)" CanBeNull="true" />
+      <Column Name="CUBATURA" Type="System.Decimal" DbType="Decimal(16,6)" CanBeNull="true" />
+      <Column Name="NOMENCLCOMBINATA1" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="NOMENCLCOMBINATA2" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ORIGINEINTRA" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="CODICEARTIMBALLO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NRPEZZIIMBALLO" Type="System.Decimal" DbType="Decimal(16,6)" CanBeNull="true" />
+      <Column Name="RIFERIMIMBALLO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="AGGIORNAMAG" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MOVIMENTAPARTITE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MOVIMENTAMATRICOLE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CODDEPOSITO" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NRTIPRAGGRUPPATE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="VARESPLICITE" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CODICEPRIMARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ARTTIPOLOGIA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ARTCONFIGURATO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DESCRESTESA" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="SERIE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODELLO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ModelloBudget" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="TipologiaProdotto" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="APPLICAMAGGIORAZIONI" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PRODIGIOUSAPREZZIMETODO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PRODIGIORAGGRCODICE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PRODIGIOUSADESCRMETODO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PRODIGIOESCLUDIBOX" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="TIPOINTRA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CODSERVIZIOINTRA" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="MODEROGAZINTRA" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="FLGSISTRI" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="TIPART62" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="UMSUPPLNOMCOMB1" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="FLGQUALITY" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="FAMIGLIAQUALITY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TIP_RAGGR1" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="TIP_RAGGR2" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="TIP_CONTATORE" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="CODFEATURE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ANAGRAFICAARTICOLI_OffertaArticolo" Member="OffertaArticolos" ThisKey="CODICE" OtherKey="CodiceArticolo" Type="OffertaArticolo" />
+      <Association Name="ANAGRAFICAARTICOLI_AnalisiVenditaConfigurazioneArticoloAggiuntivo" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos" ThisKey="CODICE" OtherKey="CodiceArticoloIn" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="ANAGRAFICAARTICOLI_AnalisiVenditaConfigurazioneArticoloAggiuntivo1" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivos1" ThisKey="CODICE" OtherKey="CodiceArticoloOut" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" />
+      <Association Name="ANAGRAFICAARTICOLI_ServizioArticolo" Member="ServizioArticolos" ThisKey="CODICE" OtherKey="CodiceAnagraficaArticolo" Type="ServizioArticolo" />
+      <Association Name="TABGRUPPI_ANAGRAFICAARTICOLI" Member="TABGRUPPI" ThisKey="GRUPPO" OtherKey="CODICE" Type="TABGRUPPI" IsForeignKey="true" />
+      <Association Name="TABCATEGORIE_ANAGRAFICAARTICOLI" Member="TABCATEGORIE" ThisKey="CATEGORIA" OtherKey="CODICE" Type="TABCATEGORIE" IsForeignKey="true" />
+      <Association Name="TABCATEGORIESTAT_ANAGRAFICAARTICOLI" Member="TABCATEGORIESTAT" ThisKey="CODCATEGORIASTAT" OtherKey="CODICE" Type="TABCATEGORIESTAT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Offerta" Member="Offertas">
+    <Type Name="Offerta">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NumeroRevisione" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Titolo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RagioneSociale" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DestinazioneMerce" Type="System.String" DbType="VarChar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Indirizzo" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Localita" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Provincia" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleCosto" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaCalcolato" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValuta" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentuale" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVendita" Type="System.Decimal" DbType="Money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiuso" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Stato" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceCommessa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TempiDiConsegna" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NoteInterne" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NoteRifiuto" Storage="_Intestazione" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TestoPieDiPagina" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TestoIntestazione" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TestoValiditaOfferta" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TestoEmailInviataAlCliente" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodicePagamento" Type="System.String" DbType="varchar(4)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizionePagamento" Type="System.String" DbType="varchar(80)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceIBAN" Type="System.String" DbType="varchar(34)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TotaleCostoCalcolato" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoValutaCalcolato" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleRicaricoPercentualeCalcolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaliModificati" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TestoSezionePagamenti" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TipologiaTempiDiConsegna" Type="System.Int16" DbType="tinyint" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="GiorniValidita" Storage="_GiorniValiditaOfferta" Type="System.Int32" DbType="int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TipologiaGiorniValidita" Type="System.Int16" DbType="tinyint" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaConSpesa" Type="System.Decimal" DbType="money" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleSpesaCacolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleVenditaConSpesaCacolato" Type="System.Decimal" DbType="decimal(18, 2)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Offerta_OffertaRaggruppamento" Member="OffertaRaggruppamentos" ThisKey="ID" OtherKey="IDOfferta" Type="OffertaRaggruppamento" />
+      <Association Name="Offerta_OffertaAccountValidatore" Member="OffertaAccountValidatores" ThisKey="ID" OtherKey="IDOfferta" Type="OffertaAccountValidatore" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.OffertaAccountValidatore" Member="OffertaAccountValidatores">
+    <Type Name="OffertaAccountValidatore">
+      <Column Name="IDOfferta" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAccount" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EffettuatoValidazione" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataOraValidazione" Type="System.DateTime" DbType="datetime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Account_OffertaAccountValidatore" Member="Account" ThisKey="IDAccount" OtherKey="ID" Type="Account" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Offerta_OffertaAccountValidatore" Member="Offerta" ThisKey="IDOfferta" OtherKey="ID" Type="Offerta" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TABPAGAMENTI" Member="TABPAGAMENTIs">
+    <Type Name="TABPAGAMENTI">
+      <Column Name="CODICE" Type="System.String" DbType="VarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIZIONE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BANCAAPPCF" Member="BANCAAPPCFs">
+    <Type Name="BANCAAPPCF">
+      <Column Name="CODCONTO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODICE" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ABI" Type="System.String" DbType="VarChar(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAB" Type="System.String" DbType="VarChar(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BANCAAPPOGGIO" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CONTOCORRENTE" Type="System.String" DbType="VarChar(15)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UTENTEMODIFICA" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DATAMODIFICA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CODICEIBAN" Type="System.String" DbType="VarChar(34)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODICEBIC" Type="System.String" DbType="VarChar(11)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CIN" Type="System.String" DbType="VarChar(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODUNIVOCOCBI" Type="System.String" DbType="VarChar(35)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDMANDATODEBITORE" Type="System.String" DbType="VarChar(35)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DATAMANDATODEBITORE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TIPOSEQINCASSORID" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CODISO" Type="System.String" DbType="VarChar(3)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.MappaturaGruppoCategoriaCategoriaStatistica" Member="MappaturaGruppoCategoriaCategoriaStatisticas">
+    <Type Name="MappaturaGruppoCategoriaCategoriaStatistica">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CodiceGruppo" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneGruppo" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceCategoria" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneCategoria" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceCategoriaStatistica" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescrizioneCategoriaStatistica" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatorias">
+    <Type Name="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria">
+      <Column Name="IDAnalisiVenditaConfigurazioneArticoloAggiuntivo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDClausolaVessatoria" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AnalisiVenditaConfigurazioneArticoloAggiuntivo_AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivo" ThisKey="IDAnalisiVenditaConfigurazioneArticoloAggiuntivo" OtherKey="ID" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivo" IsForeignKey="true" />
+      <Association Name="ClausolaVessatoria_AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" Member="ClausolaVessatoria" ThisKey="IDClausolaVessatoria" OtherKey="ID" Type="ClausolaVessatoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ClausolaVessatoria" Member="ClausolaVessatorias">
+    <Type Name="ClausolaVessatoria">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Codice" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="ClausolaVessatoria_AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" Member="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatorias" ThisKey="ID" OtherKey="IDClausolaVessatoria" Type="AnalisiVenditaConfigurazioneArticoloAggiuntivoClausolaVessatoria" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Servizio" Member="Servizios">
+    <Type Name="Servizio">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Codice" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Servizio_ServizioArticolo" Member="ServizioArticolos" ThisKey="ID" OtherKey="IDServizio" Type="ServizioArticolo" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.ServizioArticolo" Member="ServizioArticolos">
+    <Type Name="ServizioArticolo">
+      <Column Name="IDServizio" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodiceAnagraficaArticolo" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ANAGRAFICAARTICOLI_ServizioArticolo" Member="ANAGRAFICAARTICOLI" ThisKey="CodiceAnagraficaArticolo" OtherKey="CODICE" Type="ANAGRAFICAARTICOLI" IsForeignKey="true" />
+      <Association Name="Servizio_ServizioArticolo" Member="Servizio" ThisKey="IDServizio" OtherKey="ID" Type="Servizio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.InterventiConAreeMultiple" Member="InterventiConAreeMultiple">
+    <Type Name="InterventiConAreeMultiple">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataRedazione" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataPrevistaIntervento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RagioneSociale" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdDestinazione" Type="System.String" DbType="VarChar(7)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DestinazioneMerce" Type="System.String" DbType="VarChar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Indirizzo" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Localita" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Provincia" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Oggetto" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RichiesteProblematicheRiscontrate" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Definizione" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NumeroCommessa" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tipologia" Type="System.Byte" DbType="TinyInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiamata" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReferenteChiamata" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Urgente" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Interno" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VisibileAlCliente" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Stato" Type="System.Byte" DbType="TinyInt" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DescrizioneStato" Type="System.String" DbType="VarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chiuso" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotaleMinuti" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDAccountUtenteRiferimento" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDInterventoSostitutivo" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MotivazioneSostituzione" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDConfigurazioneTipologiaTicket" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.IdInterventiConAreeMultiple" Member="IdInterventiConAreeMultiple">
+    <Type Name="IdInterventiConAreeMultiple">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Progetto" Member="Progettos">
+    <Type Name="Progetto">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDPO" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDReferenteCliente" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataRedazione" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodiceCliente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RagioneSociale" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Indirizzo" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(8)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Localita" Type="System.String" DbType="VarChar(80)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Provincia" Type="System.String" DbType="VarChar(4)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(25)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdDestinazione" Type="System.String" DbType="varchar(7)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DestinazioneMerce" Type="System.String" DbType="varchar(150)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Titolo" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NumeroCommessa" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CodiceContratto" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Stato" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Chiuso" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Progetto_Progetto_Attivita" Member="Progetto_Attivita" ThisKey="ID" OtherKey="IDProgetto" Type="Progetto_Attivita" />
+      <Association Name="Progetto_Progetto_Operatore" Member="Progetto_Operatore" ThisKey="ID" OtherKey="IDProgetto" Type="Progetto_Operatore" />
+      <Association Name="Operatore_Progetto" Member="DPO" Storage="_Operatore" ThisKey="IDDPO" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+      <Association Name="Operatore_Progetto1" Member="ReferenteCliente" Storage="_Operatore1" ThisKey="IDReferenteCliente" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Progetto_Attivita" Member="Progetto_Attivitas">
+    <Type Name="Progetto_Attivita">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDProgetto" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Ordine" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+	  <Column Name="DataInserimento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+	  <Column Name="Descrizione" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Scadenza" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDOperatoreAssegnato" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDOperatoreEsecutore" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDTicket" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DataInizio" Type="System.DateTime" DbType="Date" CanBeNull="true" UpdateCheck="Never" />
+	  <Column Name="OraInizio" Type="System.TimeSpan" DbType="Time(7)" CanBeNull="true" UpdateCheck="Never" />
+	  <Column Name="DataFine" Type="System.DateTime" DbType="Date" CanBeNull="true" UpdateCheck="Never" />
+	  <Column Name="OraFine" Type="System.TimeSpan" DbType="Time(7)" CanBeNull="true" UpdateCheck="Never" />
+	  <Column Name="Stato" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NoteContratto" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NoteOperatore" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Operatore_Progetto_Attivita" Member="Operatore" ThisKey="IDOperatoreAssegnato" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+      <Association Name="Operatore_Progetto_Attivita1" Member="Esecutore" Storage="_Operatore1" ThisKey="IDOperatoreEsecutore" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+      <Association Name="Progetto_Progetto_Attivita" Member="Progetto" ThisKey="IDProgetto" OtherKey="ID" Type="Progetto" IsForeignKey="true" />
+      <Association Name="Intervento_Progetto_Attivita" Member="Intervento" ThisKey="IDTicket" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+      <Association Name="Intervento_Progetto_Attivita1" Member="Ticket" ThisKey="IDTicket" OtherKey="ID" Type="Intervento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Progetto_Operatore" Member="Progetto_Operatores">
+    <Type Name="Progetto_Operatore">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDProgetto" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IDOperatore" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Ruolo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Operatore_Progetto_Operatore" Member="Operatore" ThisKey="IDOperatore" OtherKey="ID" Type="Operatore" IsForeignKey="true" />
+      <Association Name="Progetto_Progetto_Operatore" Member="Progetto" ThisKey="IDProgetto" OtherKey="ID" Type="Progetto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SeCoGEST.Attivita" Member="Attivitas">
+    <Type Name="Attivita">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descrizione" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Function Name="SeCoGEST.CreaDocXMLInterventi" Method="CreaDocXMLInterventi">
+    <Parameter Name="IDTESTA" Type="System.Guid" DbType="uniqueidentifier" />
+    <Return Type="int" />
+  </Function>
+  <Function Name="SeCoGEST.GetContrattiPerCliente" Method="GetContrattiPerCliente">
+    <Parameter Name="CodiceCliente" Parameter="codiceCliente" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="DataIntervento" Parameter="dataIntervento" Type="System.DateTime" DbType="DateTime" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="SeCoGEST.GetElencoCompletoArticoli" Method="GetElencoCompletoArticoli" IsComposable="true">
+    <Parameter Name="dataValidita" Type="System.DateTime" DbType="DateTime" />
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="SeCoGEST.GetDataUltimoInvioNotifica" Method="GetDataUltimoInvioNotifica" IsComposable="true">
+    <Parameter Name="IDLegame" Parameter="iDLegame" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDTabellaLegame" Parameter="iDTabellaLegame" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="IDNotifica" Parameter="iDNotifica" Type="System.Byte" DbType="TinyInt" />
+    <Return Type="System.DateTime" />
+  </Function>
+</Database>

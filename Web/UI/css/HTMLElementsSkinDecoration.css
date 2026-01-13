@@ -1,0 +1,560 @@
+﻿/* Metro Skin */
+.RadForm_Metro .pageBody {
+    padding: 10px;
+    background: #FFFFFF;
+}
+.RadForm_Metro .pageView
+{
+	background: #C2DCFC; /* #F5FAFF;*/
+}
+.RadForm_Metro .pageViewPadding
+{
+    padding: 15px;
+}
+.RadForm_Metro .BordiEtichettaCornice
+{
+    border-left: solid 1px silver;
+    border-top: solid 1px silver;
+    border-right: solid 1px silver;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    background-color:white;
+}
+div.RadComboBoxDropDown_Metro.raggruppaItemsCombo .rcbSeparator 
+{
+    background: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10pt;
+    padding-left: 6px !important;
+}
+div.RadComboBoxDropDown_Metro.raggruppaItemsCombo .rcbItem, div.RadComboBoxDropDown_Metro.raggruppaItemsCombo .rcbHovered 
+{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 10pt;
+}
+/*.RadForm_Metro .RadComboBox
+{
+    border-top:none;
+    padding-top:-2px;
+    margin-top:-2px;
+    height: 20px;
+}*/
+ /*.RadForm_Metro .RadComboBox *
+{
+    border-top:none;
+    padding-top:-2px;
+    margin-top:-2px;
+    height: 20px !important;
+}*/
+  .RadForm_Metro .RadComboBoxComeText *
+{
+    border-top:none;
+    padding-top:-2px;
+    margin-top:-2px;
+    height: 20px !important;
+}
+
+
+
+
+
+
+/* Sunset Skin */
+.RadForm_Sunset .pageBody {
+    padding: 10px;
+	background: #F9ED8A;
+}
+.RadForm_Sunset .pageView
+{
+    background: #FFFFD3;
+}
+.RadForm_Sunset .pageViewPadding
+{
+    padding: 10px;
+}
+.RadForm_Sunset .BordiEtichettaCornice
+{
+    border-left: solid 1px silver;
+    border-top: solid 1px silver;
+    border-right: solid 1px silver;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    background-color:white;
+}
+div.RadComboBoxDropDown_Sunset.raggruppaItemsCombo .rcbSeparator 
+{
+    background: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10pt;
+    padding-left: 6px !important;
+}
+div.RadComboBoxDropDown_Sunset.raggruppaItemsCombo .rcbItem, div.RadComboBoxDropDown_Sunset.raggruppaItemsCombo .rcbHovered 
+{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 10pt;
+}
+.RadForm_Sunset .decorateTable
+{
+	border-collapse: collapse;
+}
+		
+.RadForm_Sunset .decorateTable th
+{
+	padding: 2px 3px;
+	background: #B94D0A;
+	color: #fff;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Sunset .decorateTable td
+{
+	padding: 2px 3px;
+	border-width: 0px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+	
+	
+.RadForm_Sunset .decorateTable .rfdRow td
+{
+	background-color: #fff;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Sunset .decorateTable .rfdAltRow td
+{
+	background-color: #F1E9DC;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Sunset .decorateTable .rfdEvidenceCol
+{
+	background-color: #F1E9DC;
+	border-color: #CABAAB;
+}
+
+.RadForm_Sunset .skinLabelBig
+{
+    font-size: 26px !important;
+    color:White;
+}
+
+.RadForm_Sunset .skinLabelMedium
+{
+    font-size: 16px !important;
+}
+
+.RadForm_Sunset .skinLabelSmall
+{
+    font-size: 12px !important;
+}
+
+
+/*.RadComboBox_Sunset .rcbDisabled
+ {
+     opacity:0.9; 
+     color:red;
+     font-size:xx-large;
+ }
+
+.RadForm_Sunset .RadComboBox_Sunset .rcbDisabled
+ {
+     color:red;
+     font-size:xx-large;
+ }
+.RadForm_Sunset .RadComboBox .rcbDisabled
+ {
+     color:red;
+     font-size:xx-large;
+ }*/
+
+
+
+
+
+
+
+
+
+/* Windows7 Skin */
+.RadForm_Windows7 .pageBody {
+    padding: 10px;
+    background: #DFE9F5;
+}
+.RadForm_Windows7 .pageView
+{
+	background: #DFE9F5;
+}
+.RadForm_Windows7 .pageViewPadding
+{
+    padding: 15px;
+}
+.RadForm_Windows7 .BordiEtichettaCornice
+{
+    border-left: solid 1px silver;
+    border-top: solid 1px silver;
+    border-right: solid 1px silver;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    background-color:white;
+}
+div.RadComboBoxDropDown_Windows7.raggruppaItemsCombo .rcbSeparator 
+{
+    background: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10pt;
+    padding-left: 6px !important;
+}
+div.RadComboBoxDropDown_Windows7.raggruppaItemsCombo .rcbItem, div.RadComboBoxDropDown_Windows7.raggruppaItemsCombo .rcbHovered 
+{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 10pt;
+}
+.RadForm_Windows7 .decorateTable
+{
+	border-collapse: collapse;
+}
+		
+.RadForm_Windows7 .decorateTable th
+{
+    font-family:Arial;
+    font-size:small;
+	padding: 2px 3px;
+	background: #DCE6F5;
+	color: #2b2c20;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #2b2c20;
+}
+		
+.RadForm_Windows7 .decorateTable td
+{
+	padding: 2px 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+		
+.RadForm_Windows7 .decorateTable .rfdRow td
+{
+	background-color: #ffffff;
+	border-color: #2b2c20;
+}
+		
+.RadForm_Windows7 .decorateTable .rfdAltRow td
+{
+	background-color: #E4EDF8;
+	border-color: #2b2c20;
+}
+
+.RadForm_Windows7 .decorateTable .rfdEvidenceCol
+{
+	background-color: #E4EDF8;
+	border-color: #CABAAB;
+}
+
+.RadForm_Windows7 .skinLabelBig
+{
+    font-size: 26px !important;
+}
+
+.RadForm_Windows7 .skinLabelMedium
+{
+    font-size: 16px !important;
+}
+
+.RadForm_Windows7 .skinLabelSmall
+{
+    font-size: 12px !important;
+}
+
+
+
+/* Stile dei pulsanti di edit interno delle griglie telerik */
+/*.RadForm_Windows7 .EditButtonStyle td
+{
+    border-top: solid 1px black;
+    padding:20px;
+}
+.RadForm_Windows7 .EditButtonStyle a
+{
+    font-size: 16px;
+    border: solid 1px brown;
+    background-color: whitesmoke;
+    padding: 7px;
+}
+.RadForm_Windows7 .EditButtonStyle a:first-child
+{
+    margin-right:50px;
+}*/
+
+
+
+
+
+
+
+
+/* Simple Skin */
+.RadForm_Simple .pageBody {
+    padding: 10px;
+    background: #FFFFFF;
+}
+.RadForm_Simple .pageView
+{
+	background: #F8F8F8;
+}
+.RadForm_Simple .pageViewPadding
+{
+    padding: 15px;
+}
+.RadForm_Simple .BordiEtichettaCornice
+{
+    border-left: solid 1px silver;
+    border-top: solid 1px silver;
+    border-right: solid 1px silver;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    background-color: white;
+}
+div.RadComboBoxDropDown_Simple.raggruppaItemsCombo .rcbSeparator 
+{
+    background: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10pt;
+    padding-left: 6px !important;
+}
+div.RadComboBoxDropDown_Simple.raggruppaItemsCombo .rcbItem, div.RadComboBoxDropDown_Simple.raggruppaItemsCombo .rcbHovered 
+{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 10pt;
+}
+.RadForm_Simple .decorateTable
+{
+	border-collapse: collapse;
+}
+		
+.RadForm_Simple .decorateTable th
+{
+    font-family:Arial;
+    font-size:small;
+	padding: 2px 3px;
+	background: #C6C6C6;
+	color: #20292B;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #20292B;
+}
+		
+.RadForm_Simple .decorateTable td
+{
+	padding: 2px 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+		
+.RadForm_Simple .decorateTable .rfdRow td
+{
+	background-color: #ffffff;
+	border-color: #20292B;
+}
+		
+.RadForm_Simple .decorateTable .rfdAltRow td
+{
+	background-color: #E4EDF8;
+	border-color: #20292B;
+}
+
+.RadForm_Simple .decorateTable .rfdEvidenceCol
+{
+	background-color: #E4EDF8;
+	border-color: #CABAAB;
+}
+
+.RadForm_Simple .skinLabelBig
+{
+    font-size: 26px !important;
+}
+
+.RadForm_Simple .skinLabelMedium
+{
+    font-size: 16px !important;
+}
+
+.RadForm_Simple .skinLabelSmall
+{
+    font-size: 12px !important;
+}
+/*.RadForm_Simple .RadComboBox
+{
+    border-top:none;
+    padding-top:-2px;
+    margin-top:-2px;
+    height: 20px;
+}
+ .RadForm_Simple .RadComboBox *
+{
+    border-top:none;
+    padding-top:-2px;
+    margin-top:-2px;
+    height: 20px !important;
+}*/
+
+
+
+
+
+
+/* Stile dei pulsanti di edit interno delle griglie telerik */
+/*.RadForm_Simple .EditButtonStyle td
+{
+    border-top: solid 1px black;
+    padding:20px;
+}
+.RadForm_Simple .EditButtonStyle a
+{
+    font-size: 16px;
+    border: solid 1px brown;
+    background-color: whitesmoke;
+    padding: 7px;
+}
+.RadForm_Simple .EditButtonStyle a:first-child
+{
+    margin-right:50px;
+}*/
+
+
+
+
+
+/* Web20 Skin */
+.RadForm_Web20 .pageBody {
+    padding: 10px;
+	background: #E5ECF5;
+}
+.RadForm_Web20 .pageView
+{
+    background: #E5ECF5;
+}
+.RadForm_Web20 .pageViewPadding
+{
+    padding: 10px;
+}
+.RadForm_Web20 .BordiEtichettaCornice
+{
+    border-left: solid 1px silver;
+    border-top: solid 1px silver;
+    border-right: solid 1px silver;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    background-color:white;
+}
+div.RadComboBoxDropDown_Web20.raggruppaItemsCombo .rcbSeparator 
+{
+    background: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10pt;
+    padding-left: 6px !important;
+}
+div.RadComboBoxDropDown_Web20.raggruppaItemsCombo .rcbItem, div.RadComboBoxDropDown_Web20.raggruppaItemsCombo .rcbHovered 
+{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 10pt;
+}
+.RadForm_Web20 .decorateTable
+{
+	border-collapse: collapse;
+}
+		
+.RadForm_Web20 .decorateTable th
+{
+	padding: 2px 3px;
+	background: #B94D0A;
+	color: #fff;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Web20 .decorateTable td
+{
+	padding: 2px 3px;
+	border-width: 0px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+	
+	
+.RadForm_Web20 .decorateTable .rfdRow td
+{
+	background-color: #fff;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Web20 .decorateTable .rfdAltRow td
+{
+	background-color: #F1E9DC;
+	border-color: #CABAAB;
+}
+		
+.RadForm_Web20 .decorateTable .rfdEvidenceCol
+{
+	background-color: #F1E9DC;
+	border-color: #CABAAB;
+}
+
+.RadForm_Web20 .skinLabelBig
+{
+    font-size: 26px !important;
+    color:skinLabelBig;
+}
+
+.RadForm_Web20 .skinLabelMedium
+{
+    font-size: 16px !important;
+}
+
+.RadForm_Web20 .skinLabelSmall
+{
+    font-size: 12px !important;
+}
+
+.RadGrid_Web20 .rgEditForm table
+{
+    margin-bottom:10px;
+}
+
+.RadGrid_Web20 .rgEditForm
+{
+    padding-bottom:10px;
+}
+
+.RadGrid_Web20 .rgEditForm a 
+{
+    border: solid 1px gray;
+    background-color: whitesmoke;
+    padding: 5px;
+}

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31AC7C26-C85B-4762-85A8-125338596091}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SeCoGEST.Logic</RootNamespace>
+    <AssemblyName>SeCoGEST.Logic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\lib\Office\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\lib\Office\office.dll</HintPath>
+    </Reference>
+    <Reference Include="SeCoGes.Utilities">
+      <HintPath>..\lib\SeCoGes.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=17.0.23.315, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountsOperatori.cs" />
+    <Compile Include="Allegati.cs" />
+    <Compile Include="Progetto_Attività.cs" />
+    <Compile Include="Progetto_Operatori.cs" />
+    <Compile Include="Progetti.cs" />
+    <Compile Include="ClausoleVessatorie.cs" />
+    <Compile Include="AnalisiVenditeConfigurazioneArticoliAggiuntiviClausoleVessatorie.cs" />
+    <Compile Include="DocumentiDaGenerare\GeneraEsportazioneArticoliOfferte.cs" />
+    <Compile Include="DocumentiDaGenerare\GeneratoreDocumenti.cs" />
+    <Compile Include="DocumentiDaGenerare\GeneratoreDocumentiExcel.cs" />
+    <Compile Include="DocumentiDaGenerare\GeneratoreOfferte.cs" />
+    <Compile Include="Attività.cs" />
+    <Compile Include="Intervento_CaratteristicheTipologieIntervento.cs" />
+    <Compile Include="CaratteristicheTipologieIntervento.cs" />
+    <Compile Include="Intervento_ConfigurazioniTipologieTicketCliente.cs" />
+    <Compile Include="AnagraficaSoggettiProprieta.cs" />
+    <Compile Include="Intervento_Discussioni.cs" />
+    <Compile Include="MappatureGruppiCategorieCategorieStatistiche.cs" />
+    <Compile Include="Metodo\AnagraficheArticoli.cs" />
+    <Compile Include="Metodo\BancheClienti.cs" />
+    <Compile Include="Metodo\Pagamenti.cs" />
+    <Compile Include="Metodo\PagamentiClienti.cs" />
+    <Compile Include="Servizi.cs" />
+    <Compile Include="ServiziArticoli.cs" />
+    <Compile Include="OfferteAccountValidatori.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodiFestivita.cs" />
+    <Compile Include="OfferteRaggruppamenti.cs" />
+    <Compile Include="OfferteArticoloCampiAggiuntivi.cs" />
+    <Compile Include="OfferteArticoli.cs" />
+    <Compile Include="OfferteArchivioCampiAggiuntivi.cs" />
+    <Compile Include="Offerte.cs" />
+    <Compile Include="AnalisiCosti.cs" />
+    <Compile Include="AnalisiCostiArchivioCampiAggiuntivi.cs" />
+    <Compile Include="AnalisiCostiArticoli.cs" />
+    <Compile Include="AnalisiCostiArticoloCampiAggiuntivi.cs" />
+    <Compile Include="AnalisiCostiRaggruppamenti.cs" />
+    <Compile Include="AnalisiVendite.cs" />
+    <Compile Include="AnalisiVenditeConfigurazioneArticoliAggiuntivi.cs" />
+    <Compile Include="AnalisiVenditeRate.cs" />
+    <Compile Include="GestoreDocumenti.cs" />
+    <Compile Include="InfoOperazioniRecord.cs" />
+    <Compile Include="InfoOperazioniRecord_Tabelle.cs" />
+    <Compile Include="LogInvioNotifiche.cs" />
+    <Compile Include="Metodo\AnagraficaDestinazioniMerce.cs" />
+    <Compile Include="Interventi.cs" />
+    <Compile Include="Intervento_Articoli.cs" />
+    <Compile Include="Intervento_Operatori.cs" />
+    <Compile Include="Intervento_Stati.cs" />
+    <Compile Include="Metodo\AnagraficheClienti.cs" />
+    <Compile Include="Metodo\Archivi.cs" />
+    <Compile Include="Metodo\ElenchiCompletiArticoli.cs" />
+    <Compile Include="ModalitaRisoluzioneInterventi.cs" />
+    <Compile Include="MotoreInvioNotifiche.cs" />
+    <Compile Include="Notifiche.cs" />
+    <Compile Include="CaratteristicheIntervento.cs" />
+    <Compile Include="ConfigurazioniTipologieTicketCliente.cs" />
+    <Compile Include="Intervento_OrariRepartiUfficio.cs" />
+    <Compile Include="OrariRepartiUfficio.cs" />
+    <Compile Include="RepartiUfficio.cs" />
+    <Compile Include="ModelliConfigurazioneTicketCliente.cs" />
+    <Compile Include="ModelliConfigurazioneCaratteristicheTicketCliente.cs" />
+    <Compile Include="CondizioniIntervento.cs" />
+    <Compile Include="TipologieIntervento.cs" />
+    <Compile Include="Operatori.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sicurezza\Accounts.cs" />
+    <Compile Include="Sicurezza\CurrentSession.cs" />
+    <Compile Include="Sicurezza\LoginResponseEnum.cs" />
+    <Compile Include="Sicurezza\SecurityManager.cs" />
+    <Compile Include="VociPredefiniteInterventi.cs" />
+    <Compile Include="_Base\LogicLayerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{c0c4da19-26b2-42e3-afa2-7d1efc1c2706}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{72942c15-22dc-4fde-87a2-106702fa97b7}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{ae7e6629-5475-43e9-908a-f2f83d4379ca}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{f3052270-76fd-4185-b42b-c3350d0433e2}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

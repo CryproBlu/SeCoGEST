@@ -1,0 +1,7 @@
+﻿CREATE TABLE [SeCoGEST].[RepartoUfficio] (
+    [Id]      UNIQUEIDENTIFIER NOT NULL,
+    [Reparto] NVARCHAR (100)   NOT NULL,
+    CONSTRAINT [PK_RepartoUfficio] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [IX_RepartoUfficio] UNIQUE NONCLUSTERED ([Reparto] ASC)
+);
+

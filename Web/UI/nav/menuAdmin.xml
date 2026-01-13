@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group Flow="Vertical">
+
+    <Item Text="Applicazione">
+      <Group Flow="Vertical">
+        <Item Text="Pagina principale" NavigateUrl="~/Home.aspx" />
+        <Item IsSeparator="True" />
+        <Item Text="Accounts di accesso" NavigateUrl="~/Sicurezza/Accounts.aspx" />
+        <Item Text="Operatori" NavigateUrl="~/Archivi/Operatori.aspx" />
+        <Item Text="Aziende" NavigateUrl="~/Anagrafica/Aziende.aspx" />
+        <Item IsSeparator="True" />
+        <Item Text="Impostazioni applicazione" NavigateUrl="~/Impostazioni.aspx" />
+      </Group>
+    </Item>
+
+    <Item Text="Anagrafiche">
+      <Group Flow="Vertical">
+        <Item Text="Soggetti" NavigateUrl="~/Anagrafica/Soggetti.aspx" Enabled="False" />
+      </Group>
+    </Item>
+
+  </Group>
+
+</Menu>

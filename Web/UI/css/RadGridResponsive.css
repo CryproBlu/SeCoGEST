@@ -1,0 +1,121 @@
+﻿/*div.RadGrid.GridResponsiveColumns table.rgMasterTable tr.rgRow td,
+div.RadGrid.GridResponsiveColumns table.rgMasterTable tr.rgAltRow td,
+div.RadGrid.GrigliaConRigheSenzaPadding table.rgMasterTable tr.rgRow td,
+div.RadGrid.GrigliaConRigheSenzaPadding table.rgMasterTable tr.rgAltRow td {
+    padding-bottom: 0;
+    padding-top: 4px;
+}*/
+
+.RadGrid input[type="image"],
+.RadGrid a img {
+    border: 0 none;
+}
+
+
+@media only screen and (max-width: 490px) {
+    div.RadGrid.GridResponsiveColumns {
+        border: none;
+        /*font-size: 18px;*/
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgMasterTable {
+        /*font-size: 1em;*/
+    }
+
+    .RadGrid.GridResponsiveColumns thead {
+        display: none;
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgRow,
+    div.RadGrid.GridResponsiveColumns .rgAltRow {
+        display: block;
+        margin-bottom: 20px;
+        border: 2px solid #cdcdcd;
+        /*background: #fff;*/
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgRow > td,
+    div.RadGrid.GridResponsiveColumns .rgAltRow > td {
+        display: block;
+        border-top: 1px solid #cdcdcd;
+        text-align: right;
+        padding: .25em .4375em;
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgRow > td:before,
+    div.RadGrid.GridResponsiveColumns .rgAltRow > td:before {
+        /*font-size: 1em;*/
+        /*color: red;*/
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgRow > td:first-child,
+    div.RadGrid.GridResponsiveColumns .rgAltRow > td:first-child {
+        border: 0 none;
+    }
+
+    div.RadGrid.GridResponsiveColumns .rgRow > td:nth-child(2n+1),
+    div.RadGrid.GridResponsiveColumns .rgAltRow > td:nth-child(2n+1) {
+        /*background: whitesmoke;*/
+    }
+
+    .RadGrid.GridResponsiveColumns .rgRow td:before,
+    .RadGrid.GridResponsiveColumns .rgAltRow td:before {
+        content: attr(data-title);
+        float: left;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div.RadGrid.GridResponsiveColumnsMedium {
+        border: none;
+        /*font-size: 18px;*/
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgMasterTable {
+        /*font-size: 1em;*/
+    }
+
+    .RadGrid.GridResponsiveColumnsMedium thead {
+        display: none;
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgRow,
+    div.RadGrid.GridResponsiveColumnsMedium .rgAltRow {
+        display: block;
+        margin-bottom: 20px;
+        border: 2px solid #cdcdcd;
+        /*background: #fff;*/
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgRow > td,
+    div.RadGrid.GridResponsiveColumnsMedium .rgAltRow > td {
+        display: block;
+        border-top: 1px solid #cdcdcd;
+        text-align: right;
+        padding: .25em .4375em;
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgRow > td:before,
+    div.RadGrid.GridResponsiveColumnsMedium .rgAltRow > td:before {
+        /*font-size: 1em;*/
+        /*color: red;*/
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgRow > td:first-child,
+    div.RadGrid.GridResponsiveColumnsMedium .rgAltRow > td:first-child {
+        border: 0 none;
+    }
+
+    div.RadGrid.GridResponsiveColumnsMedium .rgRow > td:nth-child(2n+1),
+    div.RadGrid.GridResponsiveColumnsMedium .rgAltRow > td:nth-child(2n+1) {
+        /*background: whitesmoke;*/
+    }
+
+    .RadGrid.GridResponsiveColumnsMedium .rgRow td:before,
+    .RadGrid.GridResponsiveColumnsMedium .rgAltRow td:before {
+        content: attr(data-title);
+        float: left;
+    }
+}
+
+

@@ -1,0 +1,278 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="SeCoGEST.Web.UI.Main" %>
+
+<%@ Register Src="~/UI/MenuPrincipale.ascx" TagPrefix="uc1" TagName="MenuPrincipale" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+<%--    <meta name="author" content="Gruppo SE.CO.GES. Srl" />
+    <meta name="copyright" content="© 2015 Gruppo SE.CO.GES. Srl" />--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="/UI/css/Global.css" rel="stylesheet" type="text/css" />
+    <link href="/UI/css/MetroStyle.css" rel="stylesheet" type="text/css" />
+    <link href="/UI/css/Printer.css" rel="stylesheet" type="text/css" media="print" />
+
+    <link href="/UI/css/ComboMultiColumn.css" rel="stylesheet" />
+    <link href="/UI/css/HTMLElementsSkinDecoration.css" rel="stylesheet" />
+    <link href="/UI/css/RadGridResponsive.css" rel="stylesheet"/>
+
+    <script src="/UI/js/UserControls/DocumentazioneAllegata.js" type="text/javascript"></script>
+    <script src="/UI/js/Global.js" type="text/javascript"></script>
+    <script src="/UI/js/TelerikControls.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        // Metodo che effettua la gestione dell'inizio di una richiesta ajax
+        function OnRequestStartRadAjaxManagerMaster(sender, eventargs) {
+            try {
+                DisableAjaxIfEventTargetIsRadGridButtonExport(sender, eventargs);
+            } catch (ex) {
+                alert(ex.message);
+            }            
+        }
+
+        // Necessaria al completamento del caricamento dei record 
+        // al cambiamento del numero di elementi da visualizzare nella griglia
+        function OnResponseEndRadAjaxManagerMaster(sender, eventargs) {
+            HideLoading();
+        }
+
+        // Intercettazione dell'evento PageLoad
+        // utilizzata per annullare il blocco della pagina applicato all'inizio di un post (funziona anche per chiamate asincrone)
+        function pageLoad(sender, args) {
+            // Nascondo la finestra di loading
+            HideLoading();
+        }
+
+        window.onfocus = function () { HideLoading(); }
+
+        document.onkeydown = function (e) { KeyDownHandler(e) }
+        document.onkeypress = function (e) { KeyDownHandler(e) }
+
+        // Annulla gli eventi generati dalla pressione del tasto Backspace se si è al di fuori di una textbox
+        function KeyDownHandler(e) {
+            e = e || window.event
+            //debugger;
+            var target = e.target || e.srcElement;
+            if (e.keyCode == 8) {
+                if ((typeof target.readOnly != "undefined" && target.readOnly == true) || (target.nodeName != "TEXTAREA" && target.nodeName != "textarea" && target.nodeName != "INPUT" && target.nodeName != "input")) {
+
+                    if (e.stopPropagation) { e.stopPropagation(); }
+
+                    OnBackspaceDoNothing();
+
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            else if (e.keyCode == 13 && target != null && ((typeof target.readOnly != "undefined" && target.readOnly == true) || (target.nodeName == "TEXTAREA" || target.nodeName == "textarea" || target.nodeName == "INPUT" || target.nodeName == "input"))) {
+                if (e.stopPropagation) { e.stopPropagation(); }
+                event.cancelBubble = true;
+                window.event.keyCode = 0;
+                return false;
+            }
+            else if (e.keyCode == 0) {
+                return false;
+            }
+
+            return true;
+        }
+
+        if (document.attachEvent) document.attachEvent("onkeydown", KeyDownHandler);
+        else document.addEventListener("keydown", KeyDownHandler);
+
+        //window.scrollTo = function () { }
+
+        // Annulla gli eventi generati dalla pressione del tasto Backspace se si è al di fuori di una textbox
+        function OnBackspaceDoNothing() {
+            if (window.event.keyCode == 8) {
+                event.cancelBubble = true;
+                window.event.keyCode = 0;
+            }
+        }
+        
+        function OnFormSubmit() {
+            ShowLoading();
+            return true;
+        }
+
+        onload = function () {
+
+            var e = document.getElementById("pageRefreshed");
+            if (e.value == "no") {
+                e.value = "yes";
+            }
+            else {
+                e.value = "no";
+                window.alert('I dati memorizzati nella cache del browser non sono attendibili. La pagina verrà ora ricaricata dal server!');
+                window.location.href = window.location.href;
+            }
+        }
+
+    </script>
+
+    <style type="text/css">
+        div.RadWindow {
+            z-index: 9999 !important;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onkeydown="KeyDownHandler" onkeypress="KeyDownHandler">
+    <form id="form1" runat="server" onsubmit="return OnFormSubmit();" onkeydown="KeyDownHandler" onkeypress="KeyDownHandler" defaultbutton="btnHidden" defaultfocus="btnHidden">
+        <div id="contenitore">
+            <telerik:RadScriptManager ID="mainRadScriptManager" runat="server" ClientIDMode="AutoID">
+                <Scripts>
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
+                </Scripts>
+            </telerik:RadScriptManager>
+            <telerik:RadFormDecorator ID="mainRadFormDecorator" runat="server" DecoratedControls="All" EnableRoundedCorners="true" />
+            <telerik:RadPersistenceManager ID="mainRadPersistenceManager" runat="server" EnablePersistence="true">
+                <PersistenceSettings>
+                </PersistenceSettings>
+            </telerik:RadPersistenceManager>
+
+            <input type="hidden" id="pageRefreshed" value="no" />
+
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Button runat="server" ID="btnHidden" CssClass="nascosto" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+            <div id="intestazione">
+                <telerik:RadPageLayout runat="server" Width="100%" HtmlTag="None" GridType="Fluid">
+                    <Rows>
+                        <telerik:LayoutRow RowType="Region">
+                            <Rows>
+                                <telerik:LayoutRow RowType="Region">
+                                    <Columns>
+                                        <telerik:LayoutColumn Span="0" SpanSm="0" SpanXs="12" CssClass="Logo" HiddenXs="true" >
+                                            <img alt="" src="/UI/Images/Logo_Small.png" style="border: solid 1px black; background-color: white; padding:5px;" />
+                                        </telerik:LayoutColumn>
+                                        <telerik:LayoutColumn Span="0" SpanSm="0" SpanXs="12" CssClass="AltezzaIntestazioni Titolo">
+                                            <span class="skinLabelBig">
+                                                <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder></span>
+                                        </telerik:LayoutColumn>
+                                        <telerik:LayoutColumn Span="0" SpanSm="0" SpanXs="12" CssClass="AltezzaIntestazioni InformazioniPerUtente">
+                                            <div >
+                                                <telerik:RadPageLayout runat="server" HtmlTag="None" GridType="Fluid">
+                                                    <telerik:LayoutRow>
+                                                        <Columns>
+                                                            <telerik:LayoutColumn Span="0" SpanSm="0" SpanXs="12" HiddenSm="true" HiddenXs="true" CssClass="DataOraServer">
+                                                                <telerik:RadXmlHttpPanel runat="server" ID="RadXmlHttpPanel1" EnableClientScriptEvaluation="true"
+                                                                    OnServiceRequest="RadXmlHttpPanel1_ServiceRequest">
+                                                                    <asp:Label ID="lblDatetime" runat="server"></asp:Label>
+                                                                </telerik:RadXmlHttpPanel>
+                                                            </telerik:LayoutColumn>
+                                                            <telerik:LayoutColumn Span="0" SpanSm="0" SpanXs="12" >
+                                                                <telerik:RadMenu ID="rmMenuUtente" runat="server" RenderMode="Classic" ClickToOpen="true" CausesValidation="false" OnItemClick="rmMenuUtente_ItemClick" />
+                                                            </telerik:LayoutColumn>
+                                                        </Columns>
+                                                    </telerik:LayoutRow>
+                                                </telerik:RadPageLayout>
+                                            </div>
+                                        </telerik:LayoutColumn>
+                                    </Columns>
+                                </telerik:LayoutRow>                                
+                            </Rows>
+                        </telerik:LayoutRow>
+                    </Rows>
+                </telerik:RadPageLayout>
+            </div>
+            <div id="corpoDellaPagina"">
+                <telerik:RadPageLayout ID="rplCorpoPagina" runat="server" Width="100%" HtmlTag="None" GridType="Fluid">
+                    <Rows>
+                        <telerik:LayoutRow RowType="Region">
+                            <Content>
+                                <uc1:MenuPrincipale runat="server" ID="ucMenuPrincipale" />
+                                <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+                            </Content>
+                        </telerik:LayoutRow>
+                    </Rows>
+                </telerik:RadPageLayout>
+            </div>
+        </div>
+
+        <div id="divPageBlocker" style="position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:9998;opacity:0.7;filter:alpha(opacity=70);background-color:#5467AA;display:none;"></div>
+            <div id="divPageLoading" style="position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:9998;display:none;">
+                <div class="ColoreSfondoBloccato" style="position:fixed;top:0px;left:0px;right:0px;bottom:0px;opacity:0.7;filter:alpha(opacity=70);"></div>
+                <div style="vertical-align:top; text-align:center; border: 1px Solid Black; padding-top:10px; padding-bottom:0px; background-color:White; background-image:url('/UI/Images/OrangeBar.png'); background-position:top; background-repeat:repeat-x; position:absolute; left:40%; right:40%;">
+                    <img src="/UI/Images/ajax-loader-1.gif" alt="" title="ELABORAZIONE IN CORSO..." style="width:100%" />
+                </div>
+            </div>
+
+        <div style="display: none;">
+
+            <!-- Non segue lo standard dei nomi perchè la lettura del nome nelle altre pagine fa capire che l'oggetto si trova nella master -->
+            <telerik:RadWindowManager ID="RadWindowManagerMaster" runat="server" />
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelMaster" runat="server" />
+
+            <!-- Non segue lo standard dei nomi perchè la lettura del nome nelle altre pagine fa capire che l'oggetto si trova nella master -->
+            <telerik:RadAjaxManager runat="server" ID="RadAjaxManagerMaster" 
+                ClientEvents-OnRequestStart="OnRequestStartRadAjaxManagerMaster"
+                ClientEvents-OnResponseEnd="OnResponseEndRadAjaxManagerMaster">
+                <AjaxSettings>
+                    <telerik:AjaxSetting AjaxControlID="RadWindowManagerMaster">
+                        <UpdatedControls>
+                            <telerik:AjaxUpdatedControl ControlID="RadWindowManagerMaster" />
+                        </UpdatedControls>
+                    </telerik:AjaxSetting>
+                </AjaxSettings>
+            </telerik:RadAjaxManager>
+        </div>
+
+        <telerik:RadScriptBlock runat="server">
+
+            <script type="text/javascript">
+
+                $(window).load(function () {
+                    RefreshOraData();
+                });
+
+                // Recupera la data del server e setta l'intervallo di chiamata della funzione che effettua aggiornamento della label 'lblDatetime'
+                function RefreshOraData() {
+                    DoRefresh();
+                    setInterval(DoRefresh, 60000); // 1 minuto
+                }
+
+                // Questo metodo effettua una chiamata ajax che setta il testo della label 'lblDatetime'
+                function DoRefresh() {
+                    // Recupero l'oggetto
+                    var panel = $find("<%=RadXmlHttpPanel1.ClientID %>");
+                    // Se l'oggetto è diverso da null chiamo il metodo set_value che effettua una chiamata ajax
+                    if (panel != null) {
+                        panel.set_value();
+                    }
+                }
+
+                try {
+
+                    // Codice necessario per effettuare delle operazioni al completamento del post della pagina
+                    // Inserisco la funzione da chiamare alla fine del caricamento della pagina
+                    Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(pageLoaded);
+                    function pageLoaded(sender, args) {
+                        HideLoading();
+                    }
+
+                } catch (e) {}
+                
+
+            </script>
+                        
+            <script type="text/javascript" src="/UI/js/RadGridResponsive.js"></script>
+
+        </telerik:RadScriptBlock>
+    </form>
+</body>
+</html>
