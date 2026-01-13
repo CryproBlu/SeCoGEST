@@ -1,43 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AttivitaProgetto.ascx.cs" Inherits="SeCoGEST.Web.Progetti.AttivitaProgetto" %>
 <%@ Register Src="~/UI/PageMessage.ascx" TagPrefix="uc1" TagName="PageMessage" %>
 
-<%--<script type="text/javascript">
-
-    function getProgressAreaFromUpload(sender) {
-        debugger;
-        var uploadEl = sender.get_element();
-        var block = uploadEl.closest(".upload-block");
-        if (!block) return null;
-
-        var paEl = block.querySelector(".RadProgressArea");
-        return (paEl && paEl.id) ? $find(paEl.id) : null;
-    }
-
-    function cleanupUploadUi(sender) {
-        debugger;
-        var pa = getProgressAreaFromUpload(sender);
-        if (pa && pa.hide) pa.hide();
-
-        // overlay/mask rimasti
-        var overlay = document.querySelector(
-            "#RadUploadProgressAreaOverlay, .RadUploadProgressAreaOverlay, .rwModalBackground, .rwOverlay, .TelerikModalOverlay"
-        );
-        if (overlay) overlay.style.display = "none";
-
-        document.body.style.overflow = "";
-    }
-
-    // Fine upload OK
-    function onFilesUploaded(sender, args) {
-        cleanupUploadUi(sender);
-    }
-
-    // Fine upload KO
-    function onUploadFailed(sender, args) {
-        cleanupUploadUi(sender);
-    }
-</script>--%>
-
 <script type="text/javascript">
     function killPageBlocker() {
         var pb = document.getElementById("divPageBlocker");
@@ -90,7 +53,6 @@
         // });
     })();
 </script>
-
 
 <style type="text/css">
     .noStandardStyle {
