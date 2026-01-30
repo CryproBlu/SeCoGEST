@@ -29,4 +29,14 @@ namespace SeCoGEST.Entities
             }
         }
     }
+
+
+
+    public class AllegatoLeggero
+    {
+        public string NomeFile { get;set;}
+
+        public Guid IDLegame { get; set; }
+    }
+
 }

@@ -422,6 +422,7 @@
             <asp:Repeater runat="server" ID="repAttivita">
                 <ItemTemplate>
                     <asp:CheckBox runat="server" ID="chkAttivita" Text='<%#Eval("DescrizioneAttivita") %>'/><br />
+<%--                    <asp:CheckBox runat="server" ID="chkAttivita" Checked='<%#Eval("Selezionato") %>' Text='<%#Eval("DescrizioneAttivita") %>'/><br />--%>
                 </ItemTemplate>
             </asp:Repeater>
         </ContentTemplate>

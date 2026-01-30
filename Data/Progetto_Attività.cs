@@ -87,82 +87,88 @@ namespace SeCoGEST.Data
 
         public IList<Entities.Progetto_AttivitaConAllegati> ReadWithAttachments(Guid idProgetto, string filtroNomeAllegato = null)
         {
-                // 1) Query base delle attività del progetto
-                IQueryable<Entities.Progetto_Attivita> qAttivita = Read().Where(a => a.IDProgetto == idProgetto);
+            // 1) Query base delle attività del progetto
+            IQueryable<Entities.Progetto_Attivita> qAttivita = Read().Where(a => a.IDProgetto == idProgetto);
 
-                // 2) Se c'è filtro sugli allegati, limito le attività
-                if (!string.IsNullOrEmpty(filtroNomeAllegato))
+            // 2) Se c'è filtro sugli allegati, limito le attività
+            if (!string.IsNullOrEmpty(filtroNomeAllegato))
+            {
+                qAttivita = qAttivita.Where(a =>
+                    context.Allegatoes.Any(al =>
+                        al.TipologiaAllegato == TipologiaAllegatoEnum.AttivitaProgetto.GetHashCode() &&
+                        al.IDLegame == a.ID &&
+                        al.NomeFile.Contains(filtroNomeAllegato)));
+            }
+
+            // 3) Materializzo le attività filtrate
+            var attivitaList = qAttivita.ToList();
+            if (attivitaList.Count == 0)
+                return new List<Entities.Progetto_AttivitaConAllegati>();
+
+            var idsAttivita = attivitaList.Select(a => a.ID).ToList();
+
+            // 4) Recupero tutti i nomi degli allegati delle attività in UNA sola query
+            IQueryable<AllegatoLeggero> qAllegati = context.Allegatoes
+                .Where(al => idsAttivita.Contains(al.IDLegame))
+                .Select(al => new AllegatoLeggero
                 {
-                    qAttivita = qAttivita.Where(a =>
-                        context.Allegatoes.Any(al =>
-                            al.TipologiaAllegato == TipologiaAllegatoEnum.AttivitaProgetto.GetHashCode() &&
-                            al.IDLegame == a.ID &&
-                            al.NomeFile.Contains(filtroNomeAllegato)));
-                }
+                    IDLegame = al.IDLegame,
+                    NomeFile = al.NomeFile
+                });
 
-                // 3) Materializzo le attività filtrate
-                var attivitaList = qAttivita.ToList();
-                if (attivitaList.Count == 0)
-                    return new List<Entities.Progetto_AttivitaConAllegati>();
+            // (opzionale) Se vuoi coerenza totale col filtro, puoi filtrare anche qui:
+            if (!string.IsNullOrEmpty(filtroNomeAllegato))
+            {
+                //qNomiAllegati = qNomiAllegati.Where(al => al.Contains(filtroNomeAllegato));
+                qAllegati = qAllegati.Where(al => al.NomeFile.Contains(filtroNomeAllegato));
+            }
 
-                var idsAttivita = attivitaList.Select(a => a.ID).ToList();
+            var allegatiPerAttivita = qAllegati
+                .GroupBy(al => al.IDLegame)
+                .ToDictionary(
+                    g => g.Key,
+                    g => string.Join(", ", g.Select(al => al.NomeFile)));
 
-                // 4) Recupero tutti gli allegati delle attività in UNA sola query
-                IQueryable<Entities.Allegato> qAllegati = context.Allegatoes.Where(al => idsAttivita.Contains(al.IDLegame));
+            // 5) Proiezione nel DTO Progetto_AttivitaConAllegati
+            var result = attivitaList.Select(a =>
+            {
+                string nomiAllegati;
+                if (!allegatiPerAttivita.TryGetValue(a.ID, out nomiAllegati))
+                    nomiAllegati = string.Empty;
 
-                // (opzionale) Se vuoi coerenza totale col filtro, puoi filtrare anche qui:
-                if (!string.IsNullOrEmpty(filtroNomeAllegato))
+                return new Entities.Progetto_AttivitaConAllegati
                 {
-                    qAllegati = qAllegati.Where(al => al.NomeFile.Contains(filtroNomeAllegato));
-                }
+                    Intervento = a.Intervento,
+                    ID = a.ID,
+                    IDProgetto = a.IDProgetto,
+                    Progetto = a.Progetto,
+                    Ordine = a.Ordine,
+                    DataInserimento = a.DataInserimento,
+                    Descrizione = a.Descrizione,
+                    Scadenza = a.Scadenza,
+                    IDOperatoreAssegnato = a.IDOperatoreAssegnato,
+                    OperatoreAssegnatoCognomeNome = a.OperatoreAssegnatoCognomeNome,
+                    OperatoreAssegnato = a.Operatore,
+                    IDOperatoreEsecutore = a.IDOperatoreEsecutore,
+                    OperatoreEsecutoreCognomeNome = a.OperatoreEsecutoreCognomeNome,
+                    OperatoreEsecutore = a.Esecutore,
+                    IDTicket = a.IDTicket,
+                    Ticket = a.Ticket,
+                    NumeroTicket = a.NumeroTicket,
+                    DataInizio = a.DataInizio,
+                    OraInizio = a.OraInizio,
+                    DataFine = a.DataFine,
+                    OraFine = a.OraFine,
+                    StatoEnum = a.StatoEnum,
+                    Stato = a.Stato,
+                    StatoString = a.StatoString,
+                    NoteContratto = a.NoteContratto,
+                    NoteOperatore = a.NoteOperatore,
+                    NomiAllegati = nomiAllegati
+                };
+            }).ToList();
 
-                var allegatiPerAttivita = qAllegati
-                    .GroupBy(al => al.IDLegame)
-                    .ToDictionary(
-                        g => g.Key,
-                        g => string.Join(", ", g.Select(al => al.NomeFile))
-                    );
-
-                // 5) Proiezione nel DTO Progetto_AttivitaConAllegati
-                var result = attivitaList.Select(a =>
-                {
-                    string nomiAllegati;
-                    if (!allegatiPerAttivita.TryGetValue(a.ID, out nomiAllegati))
-                        nomiAllegati = string.Empty;
-
-                    return new Entities.Progetto_AttivitaConAllegati
-                    {
-                        Intervento = a.Intervento,
-                        ID = a.ID,
-                        IDProgetto = a.IDProgetto,
-                        Progetto = a.Progetto,
-                        Ordine = a.Ordine,
-                        DataInserimento = a.DataInserimento,
-                        Descrizione = a.Descrizione,
-                        Scadenza = a.Scadenza,
-                        IDOperatoreAssegnato = a.IDOperatoreAssegnato,
-                        OperatoreAssegnatoCognomeNome = a.OperatoreAssegnatoCognomeNome,
-                        OperatoreAssegnato = a.Operatore,
-                        IDOperatoreEsecutore = a.IDOperatoreEsecutore,
-                        OperatoreEsecutoreCognomeNome = a.OperatoreEsecutoreCognomeNome,
-                        OperatoreEsecutore = a.Esecutore,
-                        IDTicket = a.IDTicket,
-                        Ticket = a.Ticket,
-                        NumeroTicket = a.NumeroTicket,
-                        DataInizio = a.DataInizio,
-                        OraInizio = a.OraInizio,
-                        DataFine = a.DataFine,
-                        OraFine = a.OraFine,
-                        StatoEnum = a.StatoEnum,
-                        Stato = a.Stato,
-                        StatoString = a.StatoString,
-                        NoteContratto = a.NoteContratto,
-                        NoteOperatore = a.NoteOperatore,
-                        NomiAllegati = nomiAllegati
-                    };
-                }).ToList();
-
-                return result;            
+            return result;
         }
     }
 }

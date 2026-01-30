@@ -58,18 +58,18 @@ namespace SeCoGEST.Web.Progetti
             //Traduce le voci del menu di filtro della griglia. Questa operazione deve essere fatta ad ogni post
             TelerikHelper.TraduciMenuFiltro(rgAttivita.FilterMenu);
 
-            if (!this.Page.IsPostBack && !this.Page.IsCallback)
-            {
-                var attivitaProgetto = GetElencoAttivitàProgetto();
-                rgAttivita.DataSource = attivitaProgetto;
-                rgAttivita.DataBind();
-            }
+            //if (!this.Page.IsPostBack && !this.Page.IsCallback)
+            //{
+            //    var attivitaProgetto = GetElencoAttivitàProgettoConAllegati();
+            //    rgAttivita.DataSource = attivitaProgetto;
+            //    rgAttivita.DataBind();
+            //}
         }
 
 
         protected void rgAttivita_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgAttivita.DataSource = GetElencoAttivitàProgetto();
+            rgAttivita.DataSource = GetElencoAttivitàProgettoConAllegati();
         }
 
         protected void rgAttivita_ItemCreated(object sender, GridItemEventArgs e)
@@ -570,7 +570,18 @@ namespace SeCoGEST.Web.Progetti
             return new Logic.Attività().Read().ToList();
         }
 
-        private List<Entities.Progetto_AttivitaConAllegati> GetElencoAttivitàProgetto()
+        private List<Entities.Progetto_Attivita> GetElencoAttivitàProgetto()
+        {
+            if (IDProgetto.HasValue)
+            {
+                Logic.Progetto_Attività llPA = new Logic.Progetto_Attività();
+                return llPA.Read(IDProgetto.Value).ToList();
+            }
+            else
+                return new List<Entities.Progetto_Attivita>();
+        }
+
+        private List<Entities.Progetto_AttivitaConAllegati> GetElencoAttivitàProgettoConAllegati()
         {
             if(IDProgetto.HasValue)
             {
@@ -589,7 +600,7 @@ namespace SeCoGEST.Web.Progetti
                 if (clickedButton.CommandName == "Import")
                 {
 
-                    List<Entities.Progetto_AttivitaConAllegati> attivitàProgetto = GetElencoAttivitàProgetto();
+                    List<Entities.Progetto_AttivitaConAllegati> attivitàProgetto = GetElencoAttivitàProgettoConAllegati();
                     int numAttivitàProgetto = 0;
                     if(attivitàProgetto.Count() > 0) numAttivitàProgetto = attivitàProgetto.Max(ap => ap.Ordine);
 
@@ -629,17 +640,28 @@ namespace SeCoGEST.Web.Progetti
         {
             SelezioneAttivitaWindow.VisibleOnPageLoad = true;
 
-            List<AttivitaSelezionabile> attivitaSelezionabili = new List<AttivitaSelezionabile>();
-            foreach (Entities.Attivita attivita in GetArchivioAttività())
-            {
-                AttivitaSelezionabile attSel = new AttivitaSelezionabile();
-                attSel.DescrizioneAttivita = attivita.Descrizione;
-                attSel.Selezionato = GetElencoAttivitàProgetto().Any(a => a.Descrizione == attivita.Descrizione);
-                attivitaSelezionabili.Add(attSel);
-            }
+            repAttivita.DataSource = GetArchivioAttività()
+                .Select(attivita => new AttivitaSelezionabile
+                {
+                    DescrizioneAttivita = attivita.Descrizione
+                    // Selezionato resta false di default
+                })
+                .ToList();
 
-            repAttivita.DataSource = attivitaSelezionabili;
             repAttivita.DataBind();
+
+            //List<AttivitaSelezionabile> attivitaSelezionabili = new List<AttivitaSelezionabile>();
+            //foreach (Entities.Attivita attivita in GetArchivioAttività())
+            //{
+            //    AttivitaSelezionabile attSel = new AttivitaSelezionabile();
+            //    attSel.DescrizioneAttivita = attivita.Descrizione;
+            //    attSel.Selezionato = GetElencoAttivitàProgetto().Any(a => a.Descrizione == attivita.Descrizione);
+            //    //attSel.Selezionato = GetElencoAttivitàProgettoConAllegati().Any(a => a.Descrizione == attivita.Descrizione);
+            //    attivitaSelezionabili.Add(attSel);
+            //}
+
+            //repAttivita.DataSource = attivitaSelezionabili;
+            //repAttivita.DataBind();
         }
 
         protected void rcbTicket_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
